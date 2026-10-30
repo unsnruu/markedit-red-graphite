@@ -1,0 +1,32 @@
+{
+  "name": "markedit-theme-bear-red-graphite",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build && node scripts/release.mjs",
+    "check": "tsc --noEmit",
+    "test": "node test/browser.mjs"
+  },
+  "dependencies": {
+    "markedit-theming": "https://github.com/MarkEdit-app/MarkEdit-theming#v0.17.0"
+  },
+  "devDependencies": {
+    "@codemirror/language": "^6.11.0",
+    "@codemirror/state": "^6.5.0",
+    "@codemirror/view": "^6.36.0",
+    "@types/node": "^22.0.0",
+    "markedit-api": "https://github.com/MarkEdit-app/MarkEdit-api#v0.14.0",
+    "markedit-vite": "https://github.com/MarkEdit-app/MarkEdit-vite#v0.4.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0",
+    "playwright": "^1.51.0"
+  },
+  "license": "MIT",
+  "description": "An independent light theme for MarkEdit with rose accents and graphite text.",
+  "packageManager": "yarn@1.22.22",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unsnruu/markedit-bear-red-graphite.git"
+  }
+}

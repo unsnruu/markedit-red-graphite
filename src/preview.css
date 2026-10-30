@@ -1,0 +1,26 @@
+.markdown-body { box-sizing:border-box; min-width:0 !important; max-width:800px; margin-inline:auto; padding:32px 48px !important; overflow-wrap:anywhere; color-scheme:light; background:#fcfcfc !important; color:#222 !important; font:16px/1.68 -apple-system,BlinkMacSystemFont,'Helvetica Neue','Apple SD Gothic Neo',sans-serif !important; -webkit-font-smoothing:antialiased; }
+.markdown-body :is(h1,h2,h3,h4,h5,h6) { color:#262626 !important; font-weight:500; line-height:1.4; margin:1em 0 .37em; padding-bottom:0; border-bottom:0 !important; text-shadow:none !important; }
+.markdown-body h1 { font-size:26px; } .markdown-body h2 { font-size:22px; } .markdown-body h3 { font-size:20px; } .markdown-body h4 { font-size:18px; } .markdown-body :is(h5,h6) { font-size:16px; } .markdown-body h6 { color:#525252 !important; }
+.markdown-body :is(p,ul,ol) { margin-block:8px; }
+.markdown-body a { color:#e06e73 !important; text-decoration:none; } .markdown-body a:hover { text-decoration:underline; }
+.markdown-body li::marker { color:#e06e73; }
+.markdown-body input[type="checkbox"] { accent-color:#e06e73; margin-inline-end:8px; }
+.markdown-body blockquote { color:#525252; border-left:2px solid #e06e73; padding-left:14px; border-radius:6px; }
+.markdown-body pre { background:#f3f3f3 !important; color:#424242; border:1px solid #e5e5e5; border-radius:6px; padding:16px; overflow:auto; }
+.markdown-body :is(code,kbd) { background:#f3f3f3; color:#424242; border-radius:4px; font-family:ui-monospace,Menlo,monospace; }
+.markdown-body pre code { background:transparent; border-radius:0; }
+.markdown-body img { max-width:100%; border-radius:8px; }
+.markdown-body table { width:fit-content; max-width:100%; border:1px solid #d8d8d8; border-collapse:separate !important; border-spacing:0; border-radius:8px; overflow:hidden; }
+.markdown-body :is(th,td) { padding:6px 13px !important; border:0 !important; border-right:1px solid #d8d8d8 !important; border-bottom:1px solid #d8d8d8 !important; }
+.markdown-body th { background:#f0f0f0 !important; }
+.markdown-body tr { background:#fcfcfc !important; } .markdown-body tr:nth-child(2n) { background:#f7f7f7 !important; }
+.markdown-body tr>:last-child { border-right:0 !important; } .markdown-body table>:last-child>tr:last-child>* { border-bottom:0 !important; }
+.markdown-body hr { border:0 !important; height:1px !important; background:#f1f1f1 !important; }
+.markdown-body mark { color:#222; background:#f4d3d5; border-radius:3px; padding-inline:2px; }
+.markdown-body kbd { border:1px solid #d8d8d8; box-shadow:0 1px 0 #d8d8d8; padding:2px 5px; }
+.markdown-body details { border:1px solid #d8d8d8; border-radius:6px; padding:10px 14px; margin-block:12px; }
+.markdown-body summary { color:#525252; cursor:pointer; } .markdown-body summary::marker { color:#e06e73; }
+.markdown-body .footnotes { color:#525252; font-size:.9em; }
+.markdown-body .markdown-alert { border:1px solid #e5e5e5 !important; border-radius:10px !important; background:#f7f7f7 !important; padding:14px 18px !important; margin-block:16px !important; color:#525252 !important; box-shadow:0 2px 5px #00000005; }
+.markdown-body ::selection { background:#f4d3d5; }
+@media(max-width:540px) { .markdown-body { padding:24px !important; } }

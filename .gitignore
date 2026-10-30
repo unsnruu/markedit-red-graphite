@@ -1,0 +1,12 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+# Local project records; not part of the distributable repository.
+/AGENTS.md
+/planning/
+/research/
+/outputs/
+/assets/original-file-hashes.json
+/assets/previews/verification.json
+/test/.generated/
