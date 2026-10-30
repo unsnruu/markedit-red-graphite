@@ -6,6 +6,10 @@ A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit), built on
 
 > Light mode only. This is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. Registry registration is pending.
 
+## Implementation note
+
+This theme was implemented with AI assistance. Despite the checks described below, it may contain overlooked bugs, incomplete styling, or compatibility issues. Please report problems through [GitHub Issues](https://github.com/unsnruu/markedit-red-graphite/issues).
+
 ## Installation
 
 Download [`markedit-theme-red-graphite.js` from v1.0.0](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.0/markedit-theme-red-graphite.js). Copy the script into MarkEdit's user scripts directory and restart MarkEdit. Building this project does **not** install the theme, restart the app, or change existing files.
