@@ -4,7 +4,7 @@ import { defaultViteConfig } from 'markedit-vite';
 
 const base = defaultViteConfig();
 const pkg = JSON.parse(readFileSync(new URL('./package.json', import.meta.url), 'utf8'));
-const license = readFileSync(new URL('./LICENSE', import.meta.url), 'utf8');
+const license = readFileSync(new URL('../LICENSE', import.meta.url), 'utf8');
 const upstreamLicense = readFileSync(new URL('./node_modules/markedit-theming/LICENSE', import.meta.url), 'utf8');
 
 export default defineConfig({

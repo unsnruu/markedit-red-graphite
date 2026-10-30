@@ -37,26 +37,7 @@ The design uses system fonts at 16px, line height 1.68 and maximum content width
 
 ## Development
 
-The root entry point, Vite configuration, Yarn lockfile and `dist/` layout follow [VS Code](https://github.com/MarkEdit-app/MarkEdit-theme-vscode) and [One Dark](https://github.com/MarkEdit-app/MarkEdit-theme-one-dark). Presentation styles are organized under `src/`. Unlike those examples, the helper's automatic deployment plugin is disabled.
-
-With Node.js 22 and Yarn 1.22.22:
-
-```sh
-corepack enable
-yarn install --frozen-lockfile
-yarn check
-yarn build
-```
-
-The build produces the single script, SHA-256, and license notices under `dist/`. The bundle contains its required license notices as well.
-
-For the browser integration test, install Chrome and set these environment variables to local files:
-
-- `MARKEDIT_HTML`: the installed MarkEdit application's `Contents/Resources/index.html`.
-- `MARKEDIT_PREVIEW_JS`: Markdown View Modes 1.14.0 release script.
-- `MARKEDIT_HIGHLIGHT_JS`: Text Highlight 1.0.0 release script.
-
-Then run `yarn test`. The test uses an ephemeral Chrome profile and a loopback server. Native file/menu calls are test doubles. It checks Source/Mixed/Preview, narrow layout, light/dark cleanup, disabling, and editing/undo; it updates sample screenshots. CI checks the build and committed `dist/` consistency; native-resource integration tests run locally.
+Source, tests, build scripts, dependencies, and generated builds are maintained under [`dev/`](dev/README.md). See the [development guide](dev/README.md) for build and browser-test instructions. Sample screenshots live under `assets/previews/`; GitHub workflows remain under `.github/workflows/`.
 
 ## Contribution and license
 

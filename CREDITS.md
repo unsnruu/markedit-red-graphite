@@ -9,8 +9,8 @@ The mweb-themes package metadata declares ISC. That declaration does not establi
 ## Software
 
 - New code: MIT, copyright 2026 Red Graphite contributors.
-- Bundled runtime dependency: [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming), MIT. Its complete notice is included in the JavaScript and `dist/THIRD-PARTY-NOTICES.txt`.
+- Bundled runtime dependency: [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming), MIT. Its complete notice is included in the JavaScript and `dev/dist/THIRD-PARTY-NOTICES.txt`.
 - CodeMirror, Lezer and markedit-api are supplied by MarkEdit at runtime and are external to the bundle.
 - [MarkEdit-vite](https://github.com/MarkEdit-app/MarkEdit-vite) is a build dependency. Its deployment plugin is disabled so a build leaves the installed app untouched.
 
-The source layout follows the official [VS Code](https://github.com/MarkEdit-app/MarkEdit-theme-vscode) and [One Dark](https://github.com/MarkEdit-app/MarkEdit-theme-one-dark) theme examples. Registration follows the [official contributing guide](https://github.com/MarkEdit-app/extensions#contributing).
+The source layout under `dev/` follows the official [VS Code](https://github.com/MarkEdit-app/MarkEdit-theme-vscode) and [One Dark](https://github.com/MarkEdit-app/MarkEdit-theme-one-dark) theme examples. Registration follows the [official contributing guide](https://github.com/MarkEdit-app/extensions#contributing).

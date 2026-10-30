@@ -9,4 +9,5 @@ node_modules/
 /outputs/
 /assets/README.md
 /assets/previews/verification.json
-/test/.generated/
+/dev/test/.generated/
+/dev/archive/
