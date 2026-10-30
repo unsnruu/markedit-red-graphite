@@ -3,7 +3,7 @@ import { syntaxTree } from '@codemirror/language';
 import editorCSS from './editor.css?raw';
 import previewCSS from './preview.css?raw';
 
-const attribute = 'data-bear-red-graphite';
+const attribute = 'data-red-graphite';
 
 function callouts(view: EditorView): DecorationSet {
   const lines = new Map<number, string>();
@@ -15,7 +15,7 @@ function callouts(view: EditorView): DecorationSet {
       const last = view.state.doc.lineAt(Math.max(node.from, node.to - 1));
       for (let n = first.number; n <= last.number; n++) {
         const line = view.state.doc.line(n);
-        lines.set(line.from, `brg-callout${n === first.number ? ' brg-first' : ''}${n === last.number ? ' brg-last' : ''}`);
+        lines.set(line.from, `rg-callout${n === first.number ? ' rg-first' : ''}${n === last.number ? ' rg-last' : ''}`);
       }
     }});
   }
@@ -37,8 +37,8 @@ export const presentation = ViewPlugin.fromClass(class {
     this.previous = document.documentElement.getAttribute(attribute);
     document.documentElement.setAttribute(attribute, 'light');
     this.style = document.createElement('style');
-    this.style.dataset.bearRedGraphiteStyle = '';
-    this.style.textContent = editorCSS + '\n' + previewCSS.replaceAll('.markdown-body', 'html[data-bear-red-graphite="light"] .markdown-body');
+    this.style.dataset.redGraphiteStyle = '';
+    this.style.textContent = editorCSS + '\n' + previewCSS.replaceAll('.markdown-body', 'html[data-red-graphite="light"] .markdown-body');
     document.head.append(this.style);
     this.observer = new MutationObserver(() => this.schedule());
     this.observer.observe(view.dom, { childList: true, subtree: true });
@@ -63,7 +63,7 @@ export const presentation = ViewPlugin.fromClass(class {
       const root = host.shadowRoot;
       if (!root || this.sheets.has(root)) continue;
       const style = document.createElement('style');
-      style.dataset.bearRedGraphiteStyle = '';
+      style.dataset.redGraphiteStyle = '';
       style.textContent = previewCSS + '\n.markdown-body { padding:0!important; margin:0!important; font-size:inherit!important }';
       root.append(style);
       this.sheets.set(root, style);
@@ -73,7 +73,7 @@ export const presentation = ViewPlugin.fromClass(class {
     this.view.requestMeasure({
       key: this,
       read: () => {
-        const boxes = [...this.view.dom.querySelectorAll('.cm-md-syntaxHiddenMode .brg-callout')].map(el => el.getBoundingClientRect());
+        const boxes = [...this.view.dom.querySelectorAll('.cm-md-syntaxHiddenMode .rg-callout')].map(el => el.getBoundingClientRect());
         return [...this.view.dom.querySelectorAll('.cm-md-syntaxHiddenBlockquoteBar-depth-1')].map(bar => {
           const box = bar.getBoundingClientRect();
           const middle = (box.top + box.bottom) / 2;
@@ -82,14 +82,14 @@ export const presentation = ViewPlugin.fromClass(class {
       },
       write: matches => {
         if (this.destroyed) return;
-        for (const { bar, hidden } of matches) bar.toggleAttribute('data-brg-callout-bar', hidden);
+        for (const { bar, hidden } of matches) bar.toggleAttribute('data-rg-callout-bar', hidden);
       },
     });
   }
   destroy() {
     this.destroyed = true;
     this.view.scrollDOM.removeEventListener('scroll', this.onScroll);
-    this.view.dom.querySelectorAll('[data-brg-callout-bar]').forEach(el => el.removeAttribute('data-brg-callout-bar'));
+    this.view.dom.querySelectorAll('[data-rg-callout-bar]').forEach(el => el.removeAttribute('data-rg-callout-bar'));
     this.observer.disconnect();
     cancelAnimationFrame(this.frame);
     this.style.remove();

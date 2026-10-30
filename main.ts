@@ -9,5 +9,5 @@ overrideThemes({
     colors,
     extension: [EditorView.theme({ '&': { backgroundColor: '#fcfcfc', color: '#222222' } }, { dark: false }), presentation],
   },
-  options: { settingsKey: 'extension.bearRedGraphite' },
+  options: { settingsKey: 'extension.redGraphite' },
 });

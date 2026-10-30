@@ -8,10 +8,10 @@ if (missing.length) throw new Error(`Set ${missing.join(', ')} to local MarkEdit
 const appPath = process.env.MARKEDIT_HTML;
 const previewPath = process.env.MARKEDIT_PREVIEW_JS;
 const highlightPath = process.env.MARKEDIT_HIGHLIGHT_JS;
-const [app, preview, highlight, theme, fixture] = await Promise.all([appPath,previewPath,highlightPath,'dist/markedit-theme-bear-red-graphite.js','test/fixture.md'].map(p=>readFile(p,'utf8')));
+const [app, preview, highlight, theme, fixture] = await Promise.all([appPath,previewPath,highlightPath,'dist/markedit-theme-red-graphite.js','test/fixture.md'].map(p=>readFile(p,'utf8')));
 const config = { host:'mainApp', text:fixture, theme:'github', fontFace:{family:'Menlo'}, fontSize:17, showLineNumbers:false, showActiveLineIndicator:true, invisiblesBehavior:'never',readOnlyMode:false,typewriterMode:false,focusMode:false,lineWrapping:true,lineHeight:1.5,suggestWhileTyping:false,smartQuotesEnabled:false,autoCharacterPairs:true,indentBehavior:'paragraph',standardDirectories:{},runtimeInfo:{appVersion:'1.37.0',osVersion:'26.0'},localizable:{previewButtonTitle:'Preview',closeButtonTitle:'Close',cmdClickToFollow:'Follow',cmdClickToToggleTodo:'Toggle'}};
 function html(disabled=false) {
- const settings = {'extension.bearRedGraphite':{enabledMode:disabled?'none':'light'},'extension.markeditPreview':{inlineRendering:['table','image'],imageHoverPreview:false}};
+ const settings = {'extension.redGraphite':{enabledMode:disabled?'none':'light'},'extension.markeditPreview':{inlineRendering:['table','image'],imageHoverPreview:false}};
  const prelude = `window.testMenus=[]; MarkEdit.addMainMenuItem=item=>window.testMenus.push(item); MarkEdit.getFileInfo=async()=>({filePath:'/test.md'}); MarkEdit.addSettingsPane=()=>{};`;
  return app.replace('"{{EDITOR_CONFIG}}"',JSON.stringify(config)).replace('"{{USER_SETTINGS}}"',JSON.stringify(settings)).replace('</body>',`<script type="module" src="/extensions.js"></script></body>`);
 }
@@ -23,7 +23,7 @@ const errors=[];page.on('pageerror',e=>errors.push(e.message));
 page.on('console',m=>{if(m.type()==='error') console.log('console:',m.text());});
 try {
  console.log('browser launched'); await page.goto(`http://127.0.0.1:${server.address().port}`, {timeout:20000}); console.log('page loaded', errors);
- await page.waitForFunction(()=>window.MarkEdit?.editorView && document.documentElement.hasAttribute('data-bear-red-graphite'),{},{timeout:15000});
+ await page.waitForFunction(()=>window.MarkEdit?.editorView && document.documentElement.hasAttribute('data-red-graphite'),{},{timeout:15000});
  await mkdir('assets/previews',{recursive:true});
  const mode = async title => { await page.evaluate(title=>testMenus[0].children.find(x=>x.title===title).action(),title); };
  const text = () => page.evaluate(()=>MarkEdit.editorView.state.doc.toString());
@@ -38,13 +38,13 @@ try {
  await page.screenshot({path:'assets/previews/editor.png',fullPage:true});
  await mode('Mixed (Syntax Hidden)');
  await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('table'));
- await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('[data-bear-red-graphite-style]'));
- assert.equal(await page.locator('.brg-callout').count(),3);
+ await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('[data-red-graphite-style]'));
+ assert.equal(await page.locator('.rg-callout').count(),3);
  assert.equal(await page.locator('.cm-md-syntaxHiddenTaskCheckboxFrame').first().evaluate(el=>getComputedStyle(el).marginInlineEnd),'8px');
- assert.equal(await page.locator('.brg-first').evaluate(el=>getComputedStyle(el).borderTopLeftRadius),'10px');
- await page.waitForFunction(()=>document.querySelector('[data-brg-callout-bar]'));
- assert.equal(await page.locator('[data-brg-callout-bar]').evaluateAll(els=>els.every(el=>getComputedStyle(el).visibility==='hidden')),true);
- assert.equal(await page.locator('.cm-md-syntaxHiddenBlockquoteBar:not([data-brg-callout-bar])').first().evaluate(el=>getComputedStyle(el).visibility),'visible');
+ assert.equal(await page.locator('.rg-first').evaluate(el=>getComputedStyle(el).borderTopLeftRadius),'10px');
+ await page.waitForFunction(()=>document.querySelector('[data-rg-callout-bar]'));
+ assert.equal(await page.locator('[data-rg-callout-bar]').evaluateAll(els=>els.every(el=>getComputedStyle(el).visibility==='hidden')),true);
+ assert.equal(await page.locator('.cm-md-syntaxHiddenBlockquoteBar:not([data-rg-callout-bar])').first().evaluate(el=>getComputedStyle(el).visibility),'visible');
  await page.screenshot({path:'assets/previews/mixed.png',fullPage:true});
  await mode('Preview (Overlay)');
  await page.waitForSelector('body > .markdown-body h1');
@@ -57,14 +57,14 @@ try {
  await page.setViewportSize({width:1100,height:1100});
  await mode('Mixed (Syntax Hidden)');
  await page.emulateMedia({colorScheme:'dark'});
- await page.waitForFunction(()=>!document.documentElement.hasAttribute('data-bear-red-graphite'));
- assert.equal(await page.locator('style[data-bear-red-graphite-style]').count(),0);
- assert.equal(await page.locator('.brg-callout').count(),0);
- assert.equal(await page.locator('[data-brg-callout-bar]').count(),0);
+ await page.waitForFunction(()=>!document.documentElement.hasAttribute('data-red-graphite'));
+ assert.equal(await page.locator('style[data-red-graphite-style]').count(),0);
+ assert.equal(await page.locator('.rg-callout').count(),0);
+ assert.equal(await page.locator('[data-rg-callout-bar]').count(),0);
  assert.equal(await text(),fixture);
  await page.emulateMedia({colorScheme:'light'});
- await page.waitForFunction(()=>document.documentElement.hasAttribute('data-bear-red-graphite'));
- assert.equal(await page.locator('head style[data-bear-red-graphite-style]').count(),1);
+ await page.waitForFunction(()=>document.documentElement.hasAttribute('data-red-graphite'));
+ assert.equal(await page.locator('head style[data-red-graphite-style]').count(),1);
  await mode('Markdown Source');
  await page.evaluate(()=>MarkEdit.editorView.dispatch({changes:{from:0,insert:'한글 편집 테스트\n'}}));
  assert.equal(await text(),'한글 편집 테스트\n'+fixture);
@@ -72,8 +72,8 @@ try {
  assert.equal(await text(),fixture);
  await page.goto(`http://127.0.0.1:${server.address().port}/disabled`);
  await page.waitForFunction(()=>window.MarkEdit?.editorView);
- assert.equal(await page.locator('html[data-bear-red-graphite]').count(),0);
- assert.equal(await page.locator('style[data-bear-red-graphite-style]').count(),0);
+ assert.equal(await page.locator('html[data-red-graphite]').count(),0);
+ assert.equal(await page.locator('style[data-red-graphite-style]').count(),0);
  assert.equal(await text(),fixture);
  assert.deepEqual(errors,[]);
  await writeFile('assets/previews/verification.json',JSON.stringify({checkedAt:new Date().toISOString(),host:'MarkEdit 1.37.0 CoreEditor in isolated Chrome',preview:'1.14.0',highlight:'1.0.0',checks:['source mode palette and typography','Mixed table shadow root styling','checkbox spacing','callout container','Preview styling','420px narrow layout','dark mode cleanup','light mode restoration without duplicate style tags','edit and undo preserve original','disabled setting','no page exceptions'],result:'passed'},null,2));

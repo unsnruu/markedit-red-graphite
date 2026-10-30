@@ -1,5 +1,5 @@
 {
-  "name": "markedit-theme-bear-red-graphite",
+  "name": "markedit-theme-red-graphite",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -27,6 +27,6 @@
   "packageManager": "yarn@1.22.22",
   "repository": {
     "type": "git",
-    "url": "https://github.com/unsnruu/markedit-bear-red-graphite.git"
+    "url": "https://github.com/unsnruu/markedit-red-graphite.git"
   }
 }

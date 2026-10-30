@@ -17,5 +17,5 @@ jobs:
       - run: yarn install --frozen-lockfile
       - run: yarn check
       - run: yarn build
-      - run: node --check dist/markedit-theme-bear-red-graphite.js
+      - run: node --check dist/markedit-theme-red-graphite.js
       - run: git diff --exit-code -- dist

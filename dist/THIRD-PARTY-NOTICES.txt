@@ -25,4 +25,4 @@ SOFTWARE.
 
 CodeMirror, Lezer and markedit-api are provided by MarkEdit at runtime, not bundled.
 No Bear or imageslr source code, logos, images, or font files are bundled.
-Design provenance: https://github.com/unsnruu/markedit-bear-red-graphite/blob/main/CREDITS.md
+Design provenance: https://github.com/unsnruu/markedit-red-graphite/blob/main/CREDITS.md

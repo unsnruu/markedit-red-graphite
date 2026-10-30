@@ -1,14 +1,14 @@
-# MarkEdit-theme-bear-red-graphite
+# MarkEdit-theme-red-graphite
 
 A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit), built on [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming). Rose accents, graphite text, rounded tables and callouts, and comfortable checkbox spacing.
 
 <img width="344" alt="Mixed mode" src="assets/previews/mixed.png" /> <img width="344" alt="Preview mode" src="assets/previews/preview.png" />
 
-> Light mode only. This is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. The name and design usage conditions are under review; this repository is being prepared privately and is not registered in the MarkEdit Extension Registry.
+> Light mode only. This is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. This repository is being prepared privately and is not registered in the MarkEdit Extension Registry.
 
 ## Installation
 
-For private review, use `dist/markedit-theme-bear-red-graphite.js` or the asset attached to the draft release. Copy the script into MarkEdit's user scripts directory and restart MarkEdit. Building this project does **not** install the theme, restart the app, or change existing files.
+For private review, use `dist/markedit-theme-red-graphite.js` or the asset attached to the draft release. Copy the script into MarkEdit's user scripts directory and restart MarkEdit. Building this project does **not** install the theme, restart the app, or change existing files.
 
 Use an isolated MarkEdit environment if you already have custom Bear CSS or companion scripts: those global styles can override this theme. To remove this theme, remove only its script and restart MarkEdit.
 
@@ -23,7 +23,7 @@ In MarkEdit's [settings.json](https://github.com/MarkEdit-app/MarkEdit/wiki/Cust
 
 ```json
 {
-  "extension.bearRedGraphite": { "enabledMode": "light" }
+  "extension.redGraphite": { "enabledMode": "light" }
 }
 ```
 

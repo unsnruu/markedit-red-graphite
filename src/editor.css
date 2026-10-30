@@ -1,51 +1,51 @@
 /* Independently authored MarkEdit styling from the user's visual specification. */
-html[data-bear-red-graphite="light"] .cm-editor {
-  --brg-paper: #fcfcfc; --brg-ink: #222; --brg-accent: #e06e73;
-  background: var(--brg-paper) !important; color: var(--brg-ink) !important;
+html[data-red-graphite="light"] .cm-editor {
+  --rg-paper: #fcfcfc; --rg-ink: #222; --rg-accent: #e06e73;
+  background: var(--rg-paper) !important; color: var(--rg-ink) !important;
 }
-html[data-bear-red-graphite="light"] .cm-editor .cm-scroller {
-  background: var(--brg-paper) !important;
+html[data-red-graphite="light"] .cm-editor .cm-scroller {
+  background: var(--rg-paper) !important;
   font: 16px/1.68 -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Apple SD Gothic Neo', sans-serif !important;
 }
-html[data-bear-red-graphite="light"] .cm-editor .cm-content {
+html[data-red-graphite="light"] .cm-editor .cm-content {
   max-width: 800px; margin-inline: auto !important; padding-block: 28px !important;
-  font-family: inherit !important; caret-color: var(--brg-accent) !important;
+  font-family: inherit !important; caret-color: var(--rg-accent) !important;
 }
-html[data-bear-red-graphite="light"] .cm-editor .cm-line { padding-inline: 24px; font-family: inherit; }
-html[data-bear-red-graphite="light"] .cm-editor :is(.cm-md-header, .cm-md-header:not(.cm-md-quote)) {
+html[data-red-graphite="light"] .cm-editor .cm-line { padding-inline: 24px; font-family: inherit; }
+html[data-red-graphite="light"] .cm-editor :is(.cm-md-header, .cm-md-header:not(.cm-md-quote)) {
   color: #262626 !important; font-weight: 500 !important; text-shadow: none !important; font-family: inherit !important;
 }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-heading1 { font-size: 26px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-heading2 { font-size: 22px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-heading3 { font-size: 20px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-heading4 { font-size: 18px !important; }
-html[data-bear-red-graphite="light"] .cm-editor :is(.cm-md-heading5,.cm-md-heading6) { font-size: 16px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-heading6 { color: #525252 !important; }
-html[data-bear-red-graphite="light"] .cm-editor :is(.cm-md-bold) { color: #222 !important; }
-html[data-bear-red-graphite="light"] .cm-editor :is(.cm-md-quote,.cm-md-italic) { color: #525252 !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-quote { font-style: normal !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-italic { font-style: italic !important; }
-html[data-bear-red-graphite="light"] .cm-editor :is(.tok-link,.cm-md-url,.cm-md-linkMark,.cm-md-listMark,.cm-md-quoteMark,.cm-md-syntaxHiddenLinkButton,.cm-md-syntaxHiddenListBullet) { color: var(--brg-accent) !important; }
-html[data-bear-red-graphite="light"] .cm-editor :is(.cm-activeLine,.cm-md-activeIndicator,.cm-activeLineGutter) { background: #f7f2f2 !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-selectionBackground { background: #f4d3d5 !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-cursor { border-left-color: var(--brg-accent) !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-gutters { background:#fcfcfc !important; color:#a0a0a0 !important; border:0; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-monospace { font-family: ui-monospace, Menlo, monospace !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-inlineCode { background:#f3f3f3 !important; color:#424242 !important; border-radius:4px; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-codeBlockWrapper { background:#f3f3f3 !important; border-radius:6px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-textHighlight { background:#f4d3d5 !important; color:#222 !important; border-radius:3px; }
-html[data-bear-red-graphite="light"] .cm-editor input[type="checkbox"] { accent-color:var(--brg-accent) !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTaskCheckboxFrame { margin-inline-end:8px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenImage { border-radius:8px !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTable { width:fit-content !important; max-width:100%; margin-left:24px; padding:0 !important; background:transparent !important; border:0 !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenHorizontalRule { border-top:1px solid #f1f1f1 !important; }
-html[data-bear-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenBlockquoteBar { background:#e06e73 !important; border-radius:2px; }
-html[data-bear-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .brg-callout { position:relative; z-index:1; background:#f7f7f7 !important; border-inline:1px solid #e5e5e5; margin-inline:24px; padding-inline:18px !important; }
-html[data-bear-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .brg-first { border-top:1px solid #e5e5e5; border-radius:10px 10px 0 0; padding-top:12px; }
-html[data-bear-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .brg-last { border-bottom:1px solid #e5e5e5; border-radius:0 0 10px 10px; padding-bottom:12px; }
-html[data-bear-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .brg-first.brg-last { border-radius:10px; }
-html[data-bear-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .brg-callout::before { content:''; position:absolute; pointer-events:none; left:-4px; width:4px; top:-1px; bottom:-1px; background:#fcfcfc; }
-html[data-bear-red-graphite="light"] :is(.cm-md-syntaxHiddenMermaid,.markdown-body .mermaid) :is(.node rect,.node polygon,.node circle,rect.actor) { fill:#f7f2f2 !important; stroke:#e06e73 !important; }
-html[data-bear-red-graphite="light"] :is(.cm-md-syntaxHiddenMermaid,.markdown-body .mermaid) :is(.nodeLabel,.label,text.actor,.messageText) { color:#262626 !important; fill:#262626 !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading1 { font-size: 26px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading2 { font-size: 22px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading3 { font-size: 20px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading4 { font-size: 18px !important; }
+html[data-red-graphite="light"] .cm-editor :is(.cm-md-heading5,.cm-md-heading6) { font-size: 16px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading6 { color: #525252 !important; }
+html[data-red-graphite="light"] .cm-editor :is(.cm-md-bold) { color: #222 !important; }
+html[data-red-graphite="light"] .cm-editor :is(.cm-md-quote,.cm-md-italic) { color: #525252 !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-quote { font-style: normal !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-italic { font-style: italic !important; }
+html[data-red-graphite="light"] .cm-editor :is(.tok-link,.cm-md-url,.cm-md-linkMark,.cm-md-listMark,.cm-md-quoteMark,.cm-md-syntaxHiddenLinkButton,.cm-md-syntaxHiddenListBullet) { color: var(--rg-accent) !important; }
+html[data-red-graphite="light"] .cm-editor :is(.cm-activeLine,.cm-md-activeIndicator,.cm-activeLineGutter) { background: #f7f2f2 !important; }
+html[data-red-graphite="light"] .cm-editor .cm-selectionBackground { background: #f4d3d5 !important; }
+html[data-red-graphite="light"] .cm-editor .cm-cursor { border-left-color: var(--rg-accent) !important; }
+html[data-red-graphite="light"] .cm-editor .cm-gutters { background:#fcfcfc !important; color:#a0a0a0 !important; border:0; }
+html[data-red-graphite="light"] .cm-editor .cm-md-monospace { font-family: ui-monospace, Menlo, monospace !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-inlineCode { background:#f3f3f3 !important; color:#424242 !important; border-radius:4px; }
+html[data-red-graphite="light"] .cm-editor .cm-md-codeBlockWrapper { background:#f3f3f3 !important; border-radius:6px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-textHighlight { background:#f4d3d5 !important; color:#222 !important; border-radius:3px; }
+html[data-red-graphite="light"] .cm-editor input[type="checkbox"] { accent-color:var(--rg-accent) !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTaskCheckboxFrame { margin-inline-end:8px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenImage { border-radius:8px !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTable { width:fit-content !important; max-width:100%; margin-left:24px; padding:0 !important; background:transparent !important; border:0 !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenHorizontalRule { border-top:1px solid #f1f1f1 !important; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenBlockquoteBar { background:#e06e73 !important; border-radius:2px; }
+html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-callout { position:relative; z-index:1; background:#f7f7f7 !important; border-inline:1px solid #e5e5e5; margin-inline:24px; padding-inline:18px !important; }
+html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-first { border-top:1px solid #e5e5e5; border-radius:10px 10px 0 0; padding-top:12px; }
+html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-last { border-bottom:1px solid #e5e5e5; border-radius:0 0 10px 10px; padding-bottom:12px; }
+html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-first.rg-last { border-radius:10px; }
+html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-callout::before { content:''; position:absolute; pointer-events:none; left:-4px; width:4px; top:-1px; bottom:-1px; background:#fcfcfc; }
+html[data-red-graphite="light"] :is(.cm-md-syntaxHiddenMermaid,.markdown-body .mermaid) :is(.node rect,.node polygon,.node circle,rect.actor) { fill:#f7f2f2 !important; stroke:#e06e73 !important; }
+html[data-red-graphite="light"] :is(.cm-md-syntaxHiddenMermaid,.markdown-body .mermaid) :is(.nodeLabel,.label,text.actor,.messageText) { color:#262626 !important; fill:#262626 !important; }
 
-html[data-bear-red-graphite="light"] .cm-editor [data-brg-callout-bar] { visibility:hidden !important; }
+html[data-red-graphite="light"] .cm-editor [data-rg-callout-bar] { visibility:hidden !important; }
