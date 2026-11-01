@@ -502,11 +502,12 @@ html[data-red-graphite="light"] .cm-editor .cm-line { padding-inline: 24px; font
 html[data-red-graphite="light"] .cm-editor :is(.cm-md-header, .cm-md-header:not(.cm-md-quote)) {
   color: #262626 !important; font-weight: 500 !important; text-shadow: none !important; font-family: inherit !important;
 }
-html[data-red-graphite="light"] .cm-editor .cm-md-heading1 { font-size: 26px !important; }
-html[data-red-graphite="light"] .cm-editor .cm-md-heading2 { font-size: 22px !important; }
-html[data-red-graphite="light"] .cm-editor .cm-md-heading3 { font-size: 20px !important; }
-html[data-red-graphite="light"] .cm-editor .cm-md-heading4 { font-size: 18px !important; }
-html[data-red-graphite="light"] .cm-editor :is(.cm-md-heading5,.cm-md-heading6) { font-size: 16px !important; }
+/* Let Mixed mode’s important zero-size syntax markers override heading typography. */
+html[data-red-graphite="light"] .cm-editor .cm-md-heading1 { font-size: 26px; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading2 { font-size: 22px; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading3 { font-size: 20px; }
+html[data-red-graphite="light"] .cm-editor .cm-md-heading4 { font-size: 18px; }
+html[data-red-graphite="light"] .cm-editor :is(.cm-md-heading5,.cm-md-heading6) { font-size: 16px; }
 html[data-red-graphite="light"] .cm-editor .cm-md-heading6 { color: #525252 !important; }
 html[data-red-graphite="light"] .cm-editor :is(.cm-md-bold) { color: #222 !important; }
 html[data-red-graphite="light"] .cm-editor :is(.cm-md-quote,.cm-md-italic) { color: #525252 !important; }

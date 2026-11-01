@@ -4,7 +4,7 @@ A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit), built on
 
 <img width="344" alt="Mixed mode" src="assets/previews/mixed.png" /> <img width="344" alt="Preview mode" src="assets/previews/preview.png" />
 
-> Light mode only. This is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. Registry registration is pending.
+> Light mode only. This is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. Available in the MarkEdit Extension Registry.
 
 ## Implementation note
 
@@ -12,7 +12,7 @@ This theme was implemented with AI assistance. Despite the checks described belo
 
 ## Installation
 
-Download [`markedit-theme-red-graphite.js` from v1.0.0](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.0/markedit-theme-red-graphite.js). Copy the script into MarkEdit's user scripts directory and restart MarkEdit. Building this project does **not** install the theme, restart the app, or change existing files.
+Download [`markedit-theme-red-graphite.js` from v1.0.1](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.1/markedit-theme-red-graphite.js). Copy the script into MarkEdit's user scripts directory and restart MarkEdit. Building this project does **not** install the theme, restart the app, or change existing files.
 
 Use an isolated MarkEdit environment if you already have custom Bear CSS or companion scripts: those global styles can override this theme. To remove this theme, remove only its script and restart MarkEdit.
 
@@ -41,6 +41,6 @@ Source, tests, build scripts, dependencies, and generated builds are maintained 
 
 ## Contribution and license
 
-The [MarkEdit registry contributing guide](https://github.com/MarkEdit-app/extensions#contributing) governs registration. A theme entry belongs under `themes/`, uses `theme.schema.json`, and includes `colorScheme`, `colorPatterns`, a versioned JavaScript URL and its SHA-256. Registry registration is requested through a pull request; availability in the Extension Manager depends on acceptance.
+The [MarkEdit registry contributing guide](https://github.com/MarkEdit-app/extensions#contributing) governs registration. A theme entry belongs under `themes/`, uses `theme.schema.json`, and includes `colorScheme`, `colorPatterns`, a versioned JavaScript URL and its SHA-256. Registry version updates are submitted through pull requests; availability in the Extension Manager depends on acceptance.
 
 New implementation: [MIT](LICENSE). See [credits and provenance](CREDITS.md) for design references and bundled dependency notices. The code license does not grant rights to third-party names or designs.

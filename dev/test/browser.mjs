@@ -70,13 +70,32 @@ try {
  assert.equal(await text(),'한글 편집 테스트\n'+fixture);
  await page.evaluate(()=>require('@codemirror/commands').undo(MarkEdit.editorView));
  assert.equal(await text(),fixture);
+ // Verify actual rendered marker sizes, not just the presence of hidden-syntax classes.
+ const headingFixture = Array.from({length:6},(_,i)=>`${'#'.repeat(i+1)} Heading ${i+1}`).join('\n') + '\n\nBody';
+ await page.evaluate(source=>MarkEdit.editorView.dispatch({changes:{from:0,to:MarkEdit.editorView.state.doc.length,insert:source},selection:{anchor:source.length}}),headingFixture);
+ const headingSizes = [26,22,20,18,16,16];
+ const headingState = () => page.evaluate(()=>Array.from({length:6},(_,i)=>{
+   const nodes = [...document.querySelectorAll(`.cm-md-heading${i+1}`)];
+   const marker = nodes.find(el=>/^#+$/.test(el.textContent));
+   const content = nodes.find(el=>el.textContent.includes(`Heading ${i+1}`));
+   return {marker:marker ? parseFloat(getComputedStyle(marker).fontSize) : null,content:content ? parseFloat(getComputedStyle(content).fontSize) : null};
+ }));
+ assert.deepEqual(await headingState(),headingSizes.map(size=>({marker:size,content:size})), 'Source headings retain visible markers and typography');
+ await mode('Mixed (Syntax Hidden)');
+ assert.deepEqual(await headingState(),headingSizes.map(size=>({marker:0,content:size})), 'Mixed hides H1–H6 markers outside the selection');
+ for (let i=0,offset=0;i<6;i++) {
+   await page.evaluate(anchor=>MarkEdit.editorView.dispatch({selection:{anchor}}),offset+i+2);
+   assert.deepEqual(await headingState(),headingSizes.map((size,j)=>({marker:i===j?size:0,content:size})), 'Only the selected heading reveals its marker');
+   offset += headingFixture.split('\n')[i].length + 1;
+ }
+ await page.evaluate(source=>MarkEdit.editorView.dispatch({changes:{from:0,to:MarkEdit.editorView.state.doc.length,insert:source},selection:{anchor:0}}),fixture);
  await page.goto(`http://127.0.0.1:${server.address().port}/disabled`);
  await page.waitForFunction(()=>window.MarkEdit?.editorView);
  assert.equal(await page.locator('html[data-red-graphite]').count(),0);
  assert.equal(await page.locator('style[data-red-graphite-style]').count(),0);
  assert.equal(await text(),fixture);
  assert.deepEqual(errors,[]);
- await writeFile('../assets/previews/verification.json',JSON.stringify({checkedAt:new Date().toISOString(),host:'MarkEdit 1.37.0 CoreEditor in isolated Chrome',preview:'1.14.0',highlight:'1.0.0',checks:['source mode palette and typography','Mixed table shadow root styling','checkbox spacing','callout container','Preview styling','420px narrow layout','dark mode cleanup','light mode restoration without duplicate style tags','edit and undo preserve original','disabled setting','no page exceptions'],result:'passed'},null,2));
+ await writeFile('../assets/previews/verification.json',JSON.stringify({checkedAt:new Date().toISOString(),host:'MarkEdit 1.37.0 CoreEditor in isolated Chrome',preview:'1.14.0',highlight:'1.0.0',checks:['source mode palette and typography','H1–H6 marker hiding, cursor reveal and Source typography','Mixed table shadow root styling','checkbox spacing','callout container','Preview styling','420px narrow layout','dark mode cleanup','light mode restoration without duplicate style tags','edit and undo preserve original','disabled setting','no page exceptions'],result:'passed'},null,2));
  console.log('PASS: Source, Mixed, Preview, narrow layout, dark/light lifecycle, editing/undo and disabled settings.');
 
 } finally { await browser.close(); await new Promise(resolve=>server.close(resolve)); }
