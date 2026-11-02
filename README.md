@@ -20,7 +20,7 @@ These screenshots show the [English sample](test/fixture.md) in an isolated brow
 
 ## Install
 
-1. Download [`markedit-theme-red-graphite.js` (v1.0.1)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.1/markedit-theme-red-graphite.js).
+1. Download [`markedit-theme-red-graphite.js` (v1.0.2)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite.js).
 2. Copy it to MarkEdit’s user scripts directory.
 3. Restart MarkEdit.
 
