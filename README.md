@@ -1,52 +1,145 @@
 # Red Graphite for MarkEdit
 
-A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit), with rose accents, graphite text, and room to breathe. Built on [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming).
+A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit).
 
-## A look inside
+- Soft white pages, dark gray text, and rose accents.
+- System fonts at 16px, with a reading width of up to 800px in the editor and Preview.
+- Styles for Mixed mode, Preview, and Finder Quick Look.
+- Built with [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming).
+
+## Take a look
 
 ### Mixed mode
 
-Write with rose highlights, comfortable task spacing, and rounded tables and callouts.
+Rose highlights, clear task spacing, and rounded tables and callouts.
 
-<img width="760" alt="English writing sample in Mixed mode, showing rose highlights, task checkboxes, a rounded note callout, and a table" src="assets/previews/mixed.png" />
+<img width="760" alt="Mixed mode with rose highlights, task checkboxes, a note callout, and a table" src="assets/previews/mixed.png" />
 
 ### Preview mode
 
-Read your notes with clear headings, soft borders, and rose links.
+Clear headings, soft borders, and rose links.
 
-<img width="760" alt="The same English sample in Preview mode, showing heading hierarchy, a blockquote, a rounded table and callout, and a code block" src="assets/previews/preview.png" />
+<img width="760" alt="Preview mode with headings, a quote, a note callout, a table, and a code block" src="assets/previews/preview.png" />
 
-These screenshots show the [English sample](test/fixture.md) in an isolated browser running MarkEdit’s editor and extensions.
+Both screenshots use the [sample note](test/fixture.md). They were taken in a separate browser test environment with MarkEdit’s editor and extensions.
 
-## Install
+## Install the theme
 
-1. Download [`markedit-theme-red-graphite.js` (v1.0.2)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite.js).
-2. Copy it to MarkEdit’s user scripts directory.
+1. Open [Red Graphite in the Extension Registry](https://markedit-app.github.io/extensions/#markedit-theme-red-graphite).
+2. Click **Add to MarkEdit** and follow the app’s install prompt.
 3. Restart MarkEdit.
 
-The theme is also listed in the MarkEdit Extension Registry. It supports light mode only.
+MarkEdit downloads and installs the theme for you.
 
-If you use custom Bear CSS or companion scripts, try the theme in a separate MarkEdit environment first. Those styles may override it. To uninstall, remove the theme’s script and restart MarkEdit.
+- Use **light mode** to see Red Graphite.
+- Quick Look CSS is a separate install. Follow the next section to add it.
+- Using custom Bear CSS or other style scripts? Try Red Graphite in a separate MarkEdit setup first. Those styles may override it.
 
-## Quick Look companion
+<details>
+<summary>Manual installation</summary>
 
-The optional CSS companion styles the **rendered preview** in Finder Quick Look in light mode. It reuses this theme's Preview typography, tables, quotes and callouts. Quick Look's source view and toolbar retain their original appearance; dark mode uses the preview extension's existing theme. This is a separate CSS installation, not a `themeName` value or an automatically synchronized editor setting.
+1. Download [`markedit-theme-red-graphite.js` (v1.0.2)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite.js).
+2. Copy it to MarkEdit’s user scripts folder.
+3. Restart MarkEdit.
 
-Requires MarkEdit 1.37.0 and Markdown View Modes (MarkEdit-preview) 1.14.0, with MarkEdit's Quick Look extension enabled. Open MarkEdit with the preview extension installed first so it prepares its shared preview resources. Earlier versions have not been verified.
+The registry version may lag behind GitHub releases. To remove a manually installed theme, delete its script and restart MarkEdit.
 
-1. Open [`markedit-theme-red-graphite-quicklook.css`](dist/markedit-theme-red-graphite-quicklook.css) and use GitHub’s **Download raw file** button to save the CSS. It is included in this repository; it is not yet attached to a GitHub release. Developers can generate the same file with `yarn build`.
-2. In Finder, choose **Go → Go to Folder** and open:
+</details>
+
+## Add Quick Look styles
+
+Want the same look in Finder? Install the optional CSS file.
+
+- It styles the **Preview** view in light mode.
+- The source view and toolbar keep their usual look.
+- Dark mode uses the preview extension’s existing theme.
+- Install it separately from the editor theme. You do not need to change `themeName`.
+
+### Before you start
+
+- Use MarkEdit 1.37.0 and [Markdown View Modes](https://github.com/MarkEdit-app/MarkEdit-preview) 1.14.0. Earlier versions have not been tested.
+- Enable MarkEdit’s Quick Look extension in macOS.
+- Open MarkEdit once with Markdown View Modes installed. This prepares the files that Quick Look needs.
+
+### Install
+
+1. Open [`markedit-theme-red-graphite-quicklook.css`](dist/markedit-theme-red-graphite-quicklook.css).
+2. On GitHub, click **Download raw file** to save it.
+3. In Finder, choose **Go → Go to Folder**. Open this folder:
+
+   ```text
+   ~/Library/Group Containers/group.app.cyan.markedit/Shared/
+   ```
+
+4. Open the `styles` folder. Create it if it does not exist.
+5. Copy the CSS file into `styles`.
+6. Close any open Quick Look window.
+7. Select a Markdown file in Finder, press Space, and choose **Preview**.
+
+The CSS is included in this repository. It is not yet attached to a GitHub release. You can also build it with `yarn build`.
+
+### Ask an AI agent to install it
+
+Copy the prompt below into an agent that can work with files on your Mac. This asks it to install the Quick Look CSS in your real environment.
+
+<details>
+<summary>Show the installation prompt</summary>
 
 ```text
-~/Library/Group Containers/group.app.cyan.markedit/Shared/styles/
+Please install the Red Graphite Quick Look CSS on my Mac.
+
+Source repository:
+https://github.com/unsnruu/markedit-red-graphite
+
+1. Read the repository README and its Quick Look instructions.
+   Use dist/markedit-theme-red-graphite-quicklook.css from the local
+   checkout if available. Otherwise, download the raw CSS from this
+   repository. Record the source commit or local file path.
+   Confirm that the downloaded file is CSS, not a GitHub HTML page.
+   Use the existing CSS; there is no need to recreate the theme.
+
+2. Check that MarkEdit and Markdown View Modes are installed and that
+   the Quick Look shared resources are ready. The documented test
+   versions are MarkEdit 1.37.0 and Markdown View Modes 1.14.0.
+   If required resources are missing, explain what I need to enable
+   or open before continuing. Keep my existing app settings intact.
+
+3. Install only this file:
+   ~/Library/Group Containers/group.app.cyan.markedit/Shared/styles/markedit-theme-red-graphite-quicklook.css
+   Create the styles folder if needed. If the destination is identical,
+   leave it as it is. If it differs, back it up outside Shared/styles
+   before replacing it. Report the backup path.
+
+4. If macOS blocks terminal access, try copying the file through Finder.
+   Keep system privacy settings unchanged. If access is still blocked,
+   explain the exact manual step I need to take and mark installation
+   as incomplete.
+
+5. Verify that the file exists at the destination. Compare SHA-256
+   checksums when readable. If only Finder verification is possible,
+   report that limit instead of claiming a checksum match.
+
+6. Report the installed path, source, backup if any, and verification.
+   Tell me to close Quick Look, select a Markdown file in Finder,
+   press Space, and choose Preview in light mode.
+   I will check the appearance myself. Distinguish file installation
+   from a visual check in Finder.
+
+Keep the editor theme, other CSS files, and settings.json unchanged.
+Do not change themeName or publish a release.
+To undo this installation, tell me how to remove this CSS file only,
+or restore the previous file from the backup if one was replaced.
 ```
 
-3. Create `styles` if needed and copy `markedit-theme-red-graphite-quicklook.css` into it.
-4. Close any open Quick Look window, select a Markdown file in Finder, press Space, and choose **Preview**. Use light mode to see Red Graphite.
+</details>
 
-To update, replace that same CSS file with the newer version. To disable or uninstall, remove only that file and reopen Quick Look. Existing preview settings and other styles do not need to change. Disabling/removing the editor theme does **not** remove this separately installed companion.
+### Update or remove
 
-Building and testing never perform this installation. The implementation follows MarkEdit's [shared CSS loader](https://github.com/MarkEdit-app/MarkEdit/blob/v1.37.0/QuickLookMac/QuickLookConfig.swift). The maintainer confirmed that the installed CSS works in Finder Quick Look on 2026-11-02. Automated verification uses the actual CoreEditor and preview extension in an isolated browser configured as the Quick Look host.
+- **Update:** replace the CSS file with the newer version.
+- **Disable or uninstall:** remove only `markedit-theme-red-graphite-quicklook.css`.
+- Close and reopen Quick Look after either change.
+- Keep your other styles and preview settings as they are.
+- Removing the editor theme does **not** remove the Quick Look CSS.
 
 ## Settings
 
@@ -58,27 +151,40 @@ Add this to MarkEdit’s [settings.json](https://github.com/MarkEdit-app/MarkEdi
 }
 ```
 
-To disable the theme, change `light` to `none` and restart MarkEdit. Setting it to `both` still provides only the light theme.
+- **Turn off:** change `light` to `none`, then restart MarkEdit.
+- **Use `both`:** Red Graphite still applies only in light mode.
+- **Change colors:** follow the [color guide](https://github.com/MarkEdit-app/MarkEdit-theming/wiki#customization).
 
-Want different colors? See the [color customization guide](https://github.com/MarkEdit-app/MarkEdit-theming/wiki#customization).
+Preview spacing is close to Mixed mode. Some Markdown may still look different. The theme keeps your text, tab width, and editing commands unchanged.
 
-Red Graphite uses system fonts at 16px and a maximum content width of 800px. Preview spacing follows Mixed mode as closely as possible; syntax visibility and Markdown rendering can still differ. Your tab width, document text, and editing commands stay unchanged.
+## Compatibility and testing
 
-## Compatibility
+- **Mixed and Preview:** use [Markdown View Modes 1.14.0](https://github.com/MarkEdit-app/MarkEdit-preview). Enable its inline rendering options for tables and images while editing.
+- **Highlights:** use [Text Highlight 1.0.0](https://github.com/MarkEdit-app/MarkEdit-highlight). Red Graphite adds the colors. Preview does not render `==highlights==`.
+- **Browser tests:** passed with MarkEdit 1.37.0 CoreEditor in a separate Chrome environment.
+- **App checks:** the quote fix and basic mode switching were checked in MarkEdit.
+- **Finder check:** the maintainer confirmed Quick Look styles worked on 2026-11-02.
+- **Not yet tested:** IME input, styled HTML export, and nested callouts.
 
-- [Markdown View Modes](https://github.com/MarkEdit-app/MarkEdit-preview) 1.14.0 provides Mixed and Preview modes. Enable its inline rendering options to show tables and images while editing.
-- [Text Highlight](https://github.com/MarkEdit-app/MarkEdit-highlight) 1.0.0 provides highlight syntax; this theme adds the colors. Preview mode does not render `==highlights==`.
-- Tested with MarkEdit 1.37.0 CoreEditor in an isolated Chrome browser. The quote fix and basic mode switching were also checked in the macOS app. IME input has not been verified. Styled HTML export and nested callouts are not covered by v1 compatibility testing.
-
-Built with AI assistance. If something looks wrong or behaves unexpectedly, please [open an issue](https://github.com/unsnruu/markedit-red-graphite/issues).
+Built with AI assistance. Found a problem? Please [open an issue](https://github.com/unsnruu/markedit-red-graphite/issues).
 
 ## Development
 
-Start with `main.ts` and the styles in `src/`. `src/preview.css` is the shared Preview style source. `scripts/quicklook.mjs` adapts its selectors to Quick Look’s content wrapper; `src/quicklook.css` contains only host layout adjustments. Edit these sources, then rebuild; do not edit `dist/` directly.
+### Where to edit
+
+- `main.ts`: editor theme setup.
+- `src/`: theme colors and styles.
+- `src/preview.css`: shared Preview styles.
+- `src/quicklook.css`: Quick Look layout changes.
+- `scripts/quicklook.mjs`: adapts Preview CSS to Quick Look’s HTML structure.
+
+Edit the source files, then rebuild. Please do not edit `dist/` directly.
+
+Quick Look loads the CSS through MarkEdit’s [shared style loader](https://github.com/MarkEdit-app/MarkEdit/blob/v1.37.0/QuickLookMac/QuickLookConfig.swift).
 
 ### Build
 
-Use Node.js 22 and Yarn 1.22.22. From the repository root (`dev/` in the full local project), run:
+Use Node.js 22 and Yarn 1.22.22. Run these commands from the code repository root (`dev/` in the full project):
 
 ```sh
 corepack enable
@@ -87,11 +193,14 @@ yarn run check
 yarn build
 ```
 
-You’ll find the editor script, Quick Look companion CSS, SHA-256 checksums for both files, and license notices in `dist/`. The script also includes the required license notices. The distributable JavaScript and Quick Look CSS are tracked in Git; the checksum and separate license notices are generated for releases. Building only creates these files; installation is a separate step.
+- `dist/` contains the editor script, Quick Look CSS, checksums, and license notices.
+- The editor script also includes its license notices.
+- Git tracks the script and CSS. Checksums and separate notices are generated for releases.
+- Building creates files only. It does not install them into MarkEdit.
 
-### Browser tests
+### Run tests
 
-Install Chrome, then set these variables to your local resource files:
+Install Chrome. Set these environment variables to your local files:
 
 | Variable | File |
 | --- | --- |
@@ -99,16 +208,23 @@ Install Chrome, then set these variables to your local resource files:
 | `MARKEDIT_PREVIEW_JS` | Markdown View Modes 1.14.0 release script |
 | `MARKEDIT_HIGHLIGHT_JS` | Text Highlight 1.0.0 release script |
 
-Run `yarn test` to check editing modes, narrow layouts, theme switching, disabling, and editing/undo. It also refreshes the two README screenshots in `assets/previews/`. Extra test screenshots and the verification report stay locally in `test/.generated/`.
+Then run `yarn test`.
 
-`test/quicklook.mjs` additionally checks shared CSS loading/removal in a temporary directory, preview styling, source/toolbar isolation, dark-mode fallback, mode switching, and narrow/wide layouts. Its screenshots and verification report are written under `test/.generated/`. It never invokes Finder, `qlmanage`, or writes to a real shared container.
+- **Editor tests:** editing modes, narrow windows, theme switching, disabling, and edit/undo.
+- **Quick Look tests:** CSS loading and removal, Preview styles, source view and toolbar, dark mode, view switching, and narrow/wide windows.
+- **README images:** refreshed in `assets/previews/`.
+- **Extra screenshots and reports:** saved locally in `test/.generated/`.
 
-Tests use a temporary Chrome profile and a local server, with simulated native file and menu calls. They leave your MarkEdit files untouched. Run these tests locally; CI checks the build and verifies that committed `dist/` files match it.
+Tests use a temporary Chrome profile and a local server. They simulate native file and menu calls. They do not open Finder, run `qlmanage`, or change your MarkEdit files.
+
+Run browser tests locally. CI checks the build and confirms that the tracked `dist/` files match it.
 
 ## Contributing and license
 
-For registry submissions and updates, follow the [MarkEdit contributing guide](https://github.com/MarkEdit-app/extensions#contributing). Entries go in `themes/` and use `theme.schema.json`, with `colorScheme`, `colorPatterns`, a versioned script URL, and its SHA-256. Submit updates through a pull request; Extension Manager availability depends on acceptance.
+- Follow the [MarkEdit contribution guide](https://github.com/MarkEdit-app/extensions#contributing) for registry submissions and updates.
+- Put registry entries in `themes/`. Use `theme.schema.json` with `colorScheme`, `colorPatterns`, a versioned script URL, and its SHA-256 checksum.
+- Submit changes through a pull request. Extension Manager updates need to be accepted first.
+- Code license: [MIT](LICENSE).
+- Design sources and dependency notices: [Credits](CREDITS.md).
 
-The implementation is licensed under [MIT](LICENSE). See [credits and provenance](CREDITS.md) for design references and dependency notices.
-
-Red Graphite is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. The code license does not grant rights to third-party names or designs.
+Red Graphite is an independent project. It is not affiliated with or endorsed by Bear or Shiny Frog. The code license does not grant rights to third-party names or designs.
