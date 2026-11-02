@@ -25,6 +25,7 @@ try {
  console.log('browser launched'); await page.goto(`http://127.0.0.1:${server.address().port}`, {timeout:20000}); console.log('page loaded', errors);
  await page.waitForFunction(()=>window.MarkEdit?.editorView && document.documentElement.hasAttribute('data-red-graphite'),{},{timeout:15000});
  await mkdir('assets/previews',{recursive:true});
+ await mkdir('test/.generated',{recursive:true});
  const mode = async title => { await page.evaluate(title=>testMenus[0].children.find(x=>x.title===title).action(),title); };
  const text = () => page.evaluate(()=>MarkEdit.editorView.state.doc.toString());
  const metrics = () => page.evaluate(()=>({
@@ -36,7 +37,7 @@ try {
  assert.equal(await text(), fixture);
  assert.deepEqual(await metrics(),{background:'rgb(252, 252, 252)',highlight:'rgb(244, 211, 213)',font:'16px',tab:4});
  await page.evaluate(()=>{ MarkEdit.editorView.dispatch({selection:{anchor:MarkEdit.editorView.state.doc.length}}); MarkEdit.editorView.contentDOM.blur(); });
- await page.screenshot({path:'assets/previews/editor.png',fullPage:true,caret:'hide'});
+ await page.screenshot({path:'test/.generated/editor.png',fullPage:true,caret:'hide'});
  await mode('Mixed (Syntax Hidden)');
  await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('table'));
  await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('[data-red-graphite-style]'));
@@ -69,7 +70,7 @@ try {
  await page.screenshot({path:'assets/previews/preview.png',fullPage:true,caret:'hide'});
  await page.setViewportSize({width:420,height:900});
  assert.equal(await page.locator('body > .markdown-body').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
- await page.screenshot({path:'assets/previews/preview-narrow.png',fullPage:true,caret:'hide'});
+ await page.screenshot({path:'test/.generated/preview-narrow.png',fullPage:true,caret:'hide'});
  await page.setViewportSize({width:880,height:1120});
  await mode('Mixed (Syntax Hidden)');
  await page.emulateMedia({colorScheme:'dark'});
@@ -111,7 +112,7 @@ try {
  assert.equal(await page.locator('style[data-red-graphite-style]').count(),0);
  assert.equal(await text(),fixture);
  assert.deepEqual(errors,[]);
- await writeFile('assets/previews/verification.json',JSON.stringify({checkedAt:new Date().toISOString(),host:'MarkEdit 1.37.0 CoreEditor in isolated Chrome',preview:'1.14.0',highlight:'1.0.0',checks:['source mode palette and typography','H1–H6 marker hiding, cursor reveal and Source typography','Mixed table shadow root styling','checkbox spacing','callout container','Preview styling','420px narrow layout','dark mode cleanup','light mode restoration without duplicate style tags','edit and undo preserve original','disabled setting','no page exceptions'],result:'passed'},null,2));
+ await writeFile('test/.generated/verification.json',JSON.stringify({checkedAt:new Date().toISOString(),host:'MarkEdit 1.37.0 CoreEditor in isolated Chrome',preview:'1.14.0',highlight:'1.0.0',checks:['source mode palette and typography','H1–H6 marker hiding, cursor reveal and Source typography','Mixed table shadow root styling','checkbox spacing','callout container','Preview styling','420px narrow layout','dark mode cleanup','light mode restoration without duplicate style tags','edit and undo preserve original','disabled setting','no page exceptions'],result:'passed'},null,2));
  console.log('PASS: Source, Mixed, Preview, narrow layout, dark/light lifecycle, editing/undo and disabled settings.');
 
 } finally { await browser.close(); await new Promise(resolve=>server.close(resolve)); }

@@ -67,7 +67,7 @@ yarn run check
 yarn build
 ```
 
-You’ll find the script, SHA-256 checksum, and license notices in `dist/`. The script also includes the required license notices. Building only creates these files; installation is a separate step.
+You’ll find the script, SHA-256 checksum, and license notices in `dist/`. The script also includes the required license notices. Only the JavaScript is tracked in Git; the checksum and separate license notices are generated for releases. Building only creates these files; installation is a separate step.
 
 ### Browser tests
 
@@ -79,7 +79,7 @@ Install Chrome, then set these variables to your local resource files:
 | `MARKEDIT_PREVIEW_JS` | Markdown View Modes 1.14.0 release script |
 | `MARKEDIT_HIGHLIGHT_JS` | Text Highlight 1.0.0 release script |
 
-Run `yarn test` to check editing modes, narrow layouts, theme switching, disabling, and editing/undo. It also refreshes the screenshots in `assets/previews/`.
+Run `yarn test` to check editing modes, narrow layouts, theme switching, disabling, and editing/undo. It also refreshes the two README screenshots in `assets/previews/`. Extra test screenshots and the verification report stay locally in `test/.generated/`.
 
 Tests use a temporary Chrome profile and a local server, with simulated native file and menu calls. They leave your MarkEdit files untouched. Run these tests locally; CI checks the build and verifies that committed `dist/` files match it.
 

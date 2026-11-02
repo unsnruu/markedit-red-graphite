@@ -11,8 +11,12 @@ yarn-error.log*
 !.env.example
 
 # Local verification output and preserved development archives
-/assets/previews/verification.json
 /test/.generated/
 /archive/
 
-# Keep dist/, yarn.lock, and public preview images in version control.
+# Recreated by yarn build; the script includes the license notices.
+/dist/SHA256SUMS.txt
+/dist/LICENSE.txt
+/dist/THIRD-PARTY-NOTICES.txt
+
+# Keep the distributable JavaScript, yarn.lock, and README images tracked.
