@@ -38,7 +38,7 @@ export const presentation = ViewPlugin.fromClass(class {
     document.documentElement.setAttribute(attribute, 'light');
     this.style = document.createElement('style');
     this.style.dataset.redGraphiteStyle = '';
-    this.style.textContent = editorCSS + '\n' + previewCSS.replaceAll('.markdown-body', 'html[data-red-graphite="light"] .markdown-body');
+    this.style.textContent = editorCSS + '\n' + previewCSS.replace(/body > \.markdown-body|\.markdown-body/g, selector => `html[data-red-graphite="light"] ${selector}`);
     document.head.append(this.style);
     this.observer = new MutationObserver(() => this.schedule());
     this.observer.observe(view.dom, { childList: true, subtree: true });

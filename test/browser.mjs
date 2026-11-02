@@ -47,9 +47,24 @@ try {
  assert.equal(await page.locator('[data-rg-callout-bar]').evaluateAll(els=>els.every(el=>getComputedStyle(el).visibility==='hidden')),true);
  assert.equal(await page.locator('.cm-md-syntaxHiddenBlockquoteBar:not([data-rg-callout-bar])').first().evaluate(el=>getComputedStyle(el).visibility),'visible');
  await page.screenshot({path:'assets/previews/mixed.png',fullPage:true,caret:'hide'});
+ const mixedHeading = await page.locator('.cm-md-heading1').evaluateAll(els=>{
+   const el = els.find(el=>el.textContent.includes('A little room to think'));
+   const r = el.getBoundingClientRect();
+   return {x:r.x,y:r.y};
+ });
  await mode('Preview (Overlay)');
  await page.waitForSelector('body > .markdown-body h1');
+ const previewHeading = await page.locator('body > .markdown-body h1').evaluate(el=>{
+   const range = document.createRange(); range.selectNodeContents(el);
+   const r = range.getBoundingClientRect(); return {x:r.x,y:r.y};
+ });
+ assert.ok(Math.abs(mixedHeading.x-previewHeading.x)<=2 && Math.abs(mixedHeading.y-previewHeading.y)<=2, 'Preview heading starts at the same position as Mixed');
+
  assert.equal(await page.locator('body > .markdown-body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(252, 252, 252)');
+ assert.deepEqual(await page.locator('body > .markdown-body blockquote:not(.markdown-alert)').first().evaluate(el=>{
+   const style = getComputedStyle(el);
+   return {left:style.borderLeftWidth,color:style.borderLeftColor,top:style.borderTopWidth,right:style.borderRightWidth,bottom:style.borderBottomWidth,radius:style.borderRadius};
+ }),{left:'2px',color:'rgb(224, 110, 115)',top:'0px',right:'0px',bottom:'0px',radius:'0px'}, 'Preview quotes have only a straight rose left border');
  assert.equal(await page.locator('body > .markdown-body .markdown-alert').evaluate(el=>getComputedStyle(el).borderRadius),'10px');
  await page.screenshot({path:'assets/previews/preview.png',fullPage:true,caret:'hide'});
  await page.setViewportSize({width:420,height:900});

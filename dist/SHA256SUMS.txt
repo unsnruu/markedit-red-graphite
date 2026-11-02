@@ -1,1 +1,1 @@
-f670bf37fbea022d397e4349842a8d5e5923ab891d0778d7a5ff73f1e9a44ddd  markedit-theme-red-graphite.js
+646d4587e3c9e2a0b1046e0f1656aee3e882812cbbbac9068df86c46671501cf  markedit-theme-red-graphite.js

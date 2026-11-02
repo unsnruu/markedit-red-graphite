@@ -5,7 +5,7 @@
 .markdown-body a { color:#e06e73 !important; text-decoration:none; } .markdown-body a:hover { text-decoration:underline; }
 .markdown-body li::marker { color:#e06e73; }
 .markdown-body input[type="checkbox"] { accent-color:#e06e73; margin-inline-end:8px; }
-.markdown-body blockquote { color:#525252; border-left:2px solid #e06e73; padding-left:14px; border-radius:6px; }
+.markdown-body blockquote { color:#525252; border:0; border-left:2px solid #e06e73; padding-left:14px; border-radius:0; }
 .markdown-body pre { background:#f3f3f3 !important; color:#424242; border:1px solid #e5e5e5; border-radius:6px; padding:16px; overflow:auto; }
 .markdown-body :is(code,kbd) { background:#f3f3f3; color:#424242; border-radius:4px; font-family:ui-monospace,Menlo,monospace; }
 .markdown-body pre code { background:transparent; border-radius:0; }
@@ -24,3 +24,35 @@
 .markdown-body .markdown-alert { border:1px solid #e5e5e5 !important; border-radius:10px !important; background:#f7f7f7 !important; padding:14px 18px !important; margin-block:16px !important; color:#525252 !important; box-shadow:0 2px 5px #00000005; }
 .markdown-body ::selection { background:#f4d3d5; }
 @media(max-width:540px) { .markdown-body { padding:24px !important; } }
+
+/* Match the editor's line rhythm without changing the table shadow-root styles. */
+body > .markdown-body {
+  padding:28px 24px !important;
+  line-height:1.5 !important;
+}
+body > .markdown-body :is(h1,h2,h3,h4,h5,h6) {
+  line-height:1.5;
+  margin-block:24px;
+}
+body > .markdown-body > :is(p,ul,ol,blockquote,table,pre,div) { margin-block:24px; }
+body > .markdown-body > :first-child { margin-top:0 !important; }
+body > .markdown-body > :last-child { margin-bottom:0 !important; }
+body > .markdown-body :is(ul,ol) { padding-left:24px; }
+body > .markdown-body li + li { margin-top:0; }
+body > .markdown-body li > p { margin-block:0; }
+body > .markdown-body li > :is(ul,ol) { margin-block:0; }
+body > .markdown-body .task-list-item { list-style:none; }
+body > .markdown-body input[type="checkbox"] {
+  width:16px; height:16px; margin-block:0; margin-left:-24px; margin-right:8px; vertical-align:-2px;
+}
+body > .markdown-body blockquote { padding-inline:14px 0; }
+body > .markdown-body blockquote > p { margin-block:0; }
+body > .markdown-body .markdown-alert {
+  padding:12px 18px !important;
+  margin-block:24px !important;
+  box-shadow:none;
+}
+body > .markdown-body .markdown-alert > p { margin-block:0; }
+body > .markdown-body table { line-height:1.68; }
+body > .markdown-body pre { font-size:16px; line-height:1.5; }
+body > .markdown-body pre code { font-size:inherit; line-height:inherit; }
