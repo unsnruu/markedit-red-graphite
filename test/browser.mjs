@@ -18,7 +18,7 @@ function html(disabled=false) {
 const server = createServer((req,res)=> { if(req.url === '/extensions.js') { res.setHeader('Content-Type','text/javascript'); res.end(`window.testMenus=[]; MarkEdit.addMainMenuItem=item=>window.testMenus.push(item); MarkEdit.getFileInfo=async()=>({filePath:'/test.md'}); MarkEdit.addSettingsPane=()=>{};\n(()=>{${preview}\n})();\n(()=>{${highlight}\n})();\n(()=>{${theme}\n})();`); } else {res.setHeader('Content-Type','text/html'); res.end(html(req.url.includes('disabled')));} });
 await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const browser = await chromium.launch({channel:'chrome',headless:true});
-const page = await browser.newPage({viewport:{width:1100,height:1100},colorScheme:'light'});
+const page = await browser.newPage({viewport:{width:880,height:1120},colorScheme:'light'});
 const errors=[];page.on('pageerror',e=>errors.push(e.message));
 page.on('console',m=>{if(m.type()==='error') console.log('console:',m.text());});
 try {
@@ -35,7 +35,8 @@ try {
  }));
  assert.equal(await text(), fixture);
  assert.deepEqual(await metrics(),{background:'rgb(252, 252, 252)',highlight:'rgb(244, 211, 213)',font:'16px',tab:4});
- await page.screenshot({path:'assets/previews/editor.png',fullPage:true});
+ await page.evaluate(()=>{ MarkEdit.editorView.dispatch({selection:{anchor:MarkEdit.editorView.state.doc.length}}); MarkEdit.editorView.contentDOM.blur(); });
+ await page.screenshot({path:'assets/previews/editor.png',fullPage:true,caret:'hide'});
  await mode('Mixed (Syntax Hidden)');
  await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('table'));
  await page.waitForFunction(()=>document.querySelector('.cm-md-syntaxHiddenTable')?.shadowRoot?.querySelector('[data-red-graphite-style]'));
@@ -45,16 +46,16 @@ try {
  await page.waitForFunction(()=>document.querySelector('[data-rg-callout-bar]'));
  assert.equal(await page.locator('[data-rg-callout-bar]').evaluateAll(els=>els.every(el=>getComputedStyle(el).visibility==='hidden')),true);
  assert.equal(await page.locator('.cm-md-syntaxHiddenBlockquoteBar:not([data-rg-callout-bar])').first().evaluate(el=>getComputedStyle(el).visibility),'visible');
- await page.screenshot({path:'assets/previews/mixed.png',fullPage:true});
+ await page.screenshot({path:'assets/previews/mixed.png',fullPage:true,caret:'hide'});
  await mode('Preview (Overlay)');
  await page.waitForSelector('body > .markdown-body h1');
  assert.equal(await page.locator('body > .markdown-body').evaluate(el=>getComputedStyle(el).backgroundColor),'rgb(252, 252, 252)');
  assert.equal(await page.locator('body > .markdown-body .markdown-alert').evaluate(el=>getComputedStyle(el).borderRadius),'10px');
- await page.screenshot({path:'assets/previews/preview.png',fullPage:true});
+ await page.screenshot({path:'assets/previews/preview.png',fullPage:true,caret:'hide'});
  await page.setViewportSize({width:420,height:900});
  assert.equal(await page.locator('body > .markdown-body').evaluate(el=>el.scrollWidth<=el.clientWidth),true);
- await page.screenshot({path:'assets/previews/preview-narrow.png',fullPage:true});
- await page.setViewportSize({width:1100,height:1100});
+ await page.screenshot({path:'assets/previews/preview-narrow.png',fullPage:true,caret:'hide'});
+ await page.setViewportSize({width:880,height:1120});
  await mode('Mixed (Syntax Hidden)');
  await page.emulateMedia({colorScheme:'dark'});
  await page.waitForFunction(()=>!document.documentElement.hasAttribute('data-red-graphite'));

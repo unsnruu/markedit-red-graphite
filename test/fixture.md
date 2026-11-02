@@ -1,36 +1,35 @@
-# 생각을 담는 공간
+# A little room to think
 
-Rose accents · Graphite text
+Notes, plans, and the details worth keeping.
 
-평온한 화면에서 **중요한 문장**과 *작은 생각*을 정리합니다.
-[MarkEdit](https://github.com/MarkEdit-app/MarkEdit) · `inline code` · ==장밋빛 하이라이트==
+## Make space for what matters
 
-## 오늘의 기록
+A quiet page for **clear ideas**, *small observations*, and ==a little emphasis==.
+Keep a useful [reference](https://github.com/MarkEdit-app/MarkEdit) close, or capture a thought with `inline code`.
 
-- [x] 밝은 배경과 글꼴 확인
-- [ ] 체크박스 뒤 여백 확인
-- 목록과 링크의 포인트 색상
+- [x] Find a calmer place to write
+- [ ] Turn a rough idea into a first draft
+- [ ] Leave room for something unexpected
 
-> 인용문은 읽는 흐름에 여백을 더합니다.
+> Good notes give your next thought somewhere to begin.
 
 > [!NOTE]
-> 알림은 둥근 컨테이너에 담습니다.
-> 문서 원문은 바뀌지 않습니다.
+> Keep the idea. Lose the noise.
+> A small reminder, set apart from the rest of the page.
 
----
+## The details make the difference
 
-| 요소 | 디자인 |
-| --- | --- |
-| 배경 | 부드러운 흰색 |
-| 강조 | 장밋빛 |
+| Element    | A quieter approach                 |
+| ---------- | ---------------------------------- |
+| Color      | Rose accents on soft white         |
+| Typography | Graphite text with room to breathe |
+| Shape      | Rounded tables and callouts        |
 
-### 코드와 세부 요소
+### One small starting point
 
 ```javascript
-const theme = 'graphite';
-console.log(theme);
+const note = {
+  title: 'Something worth keeping',
+  space: 'room to think',
+};
 ```
-
-<details><summary>자세히 보기</summary>시스템 글꼴을 사용합니다. <kbd>⌘</kbd> <mark>강조</mark></details>
-
-끝.

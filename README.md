@@ -1,29 +1,36 @@
-# MarkEdit-theme-red-graphite
+# Red Graphite for MarkEdit
 
-A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit), built on [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming). Rose accents, graphite text, rounded tables and callouts, and comfortable checkbox spacing.
+A light theme for [MarkEdit](https://github.com/MarkEdit-app/MarkEdit), with rose accents, graphite text, and room to breathe. Built on [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming).
 
-<img width="344" alt="Mixed mode" src="assets/previews/mixed.png" /> <img width="344" alt="Preview mode" src="assets/previews/preview.png" />
+## A look inside
 
-> Light mode only. This is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. Available in the MarkEdit Extension Registry.
+### Mixed mode
 
-## Implementation note
+Write with rose highlights, comfortable task spacing, and rounded tables and callouts.
 
-This theme was implemented with AI assistance. Despite the checks described below, it may contain overlooked bugs, incomplete styling, or compatibility issues. Please report problems through [GitHub Issues](https://github.com/unsnruu/markedit-red-graphite/issues).
+<img width="760" alt="English writing sample in Mixed mode, showing rose highlights, task checkboxes, a rounded note callout, and a table" src="assets/previews/mixed.png" />
 
-## Installation
+### Preview mode
 
-Download [`markedit-theme-red-graphite.js` from v1.0.1](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.1/markedit-theme-red-graphite.js). Copy the script into MarkEdit's user scripts directory and restart MarkEdit. Building this project does **not** install the theme, restart the app, or change existing files.
+Read your notes with clear headings, soft borders, and rose links.
 
-Use an isolated MarkEdit environment if you already have custom Bear CSS or companion scripts: those global styles can override this theme. To remove this theme, remove only its script and restart MarkEdit.
+<img width="760" alt="The same English sample in Preview mode, showing heading hierarchy, a blockquote, a rounded table and callout, and a code block" src="assets/previews/preview.png" />
 
-- Tested host: MarkEdit 1.37.0 CoreEditor in an isolated Chrome browser.
-- [Markdown View Modes](https://github.com/MarkEdit-app/MarkEdit-preview) 1.14.0 provides Mixed/Preview rendering. Enable table/image inline rendering there when needed.
-- [Text Highlight](https://github.com/MarkEdit-app/MarkEdit-highlight) 1.0.0 provides highlight syntax. This theme only supplies its colors; it does not add `==` parsing to Preview.
-- Native macOS installation and IME composition have not been validated by the browser tests. Styled HTML export and nested callout rendering are outside the v1 compatibility guarantee.
+These screenshots show the [English sample](test/fixture.md) in an isolated browser running MarkEdit’s editor and extensions.
+
+## Install
+
+1. Download [`markedit-theme-red-graphite.js` (v1.0.1)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.1/markedit-theme-red-graphite.js).
+2. Copy it to MarkEdit’s user scripts directory.
+3. Restart MarkEdit.
+
+The theme is also listed in the MarkEdit Extension Registry. It supports light mode only.
+
+If you use custom Bear CSS or companion scripts, try the theme in a separate MarkEdit environment first. Those styles may override it. To uninstall, remove the theme’s script and restart MarkEdit.
 
 ## Settings
 
-In MarkEdit's [settings.json](https://github.com/MarkEdit-app/MarkEdit/wiki/Customization#advanced-settings):
+Add this to MarkEdit’s [settings.json](https://github.com/MarkEdit-app/MarkEdit/wiki/Customization#advanced-settings):
 
 ```json
 {
@@ -31,15 +38,27 @@ In MarkEdit's [settings.json](https://github.com/MarkEdit-app/MarkEdit/wiki/Cust
 }
 ```
 
-Use `none` to disable, then restart MarkEdit. `both` also applies only the supplied light theme; no dark theme is supplied. Color customization is documented by [MarkEdit-theming](https://github.com/MarkEdit-app/MarkEdit-theming/wiki#customization).
+To disable the theme, change `light` to `none` and restart MarkEdit. Setting it to `both` still provides only the light theme.
 
-The design uses system fonts at 16px, line height 1.68 and maximum content width 800px. It does not change tab width, document content, or editing commands.
+Want different colors? See the [color customization guide](https://github.com/MarkEdit-app/MarkEdit-theming/wiki#customization).
+
+Red Graphite uses system fonts at 16px and a maximum content width of 800px. Preview spacing follows Mixed mode as closely as possible; syntax visibility and Markdown rendering can still differ. Your tab width, document text, and editing commands stay unchanged.
+
+## Compatibility
+
+- [Markdown View Modes](https://github.com/MarkEdit-app/MarkEdit-preview) 1.14.0 provides Mixed and Preview modes. Enable its inline rendering options to show tables and images while editing.
+- [Text Highlight](https://github.com/MarkEdit-app/MarkEdit-highlight) 1.0.0 provides highlight syntax; this theme adds the colors. Preview mode does not render `==highlights==`.
+- Tested with MarkEdit 1.37.0 CoreEditor in an isolated Chrome browser. The quote fix and basic mode switching were also checked in the macOS app. IME input has not been verified. Styled HTML export and nested callouts are not covered by v1 compatibility testing.
+
+Built with AI assistance. If something looks wrong or behaves unexpectedly, please [open an issue](https://github.com/unsnruu/markedit-red-graphite/issues).
 
 ## Development
 
-Source styles are in `src/`; the entry point is `main.ts`.
+Start with `main.ts` and the styles in `src/`.
 
-With Node.js 22 and Yarn 1.22.22, start from the repository root:
+### Build
+
+Use Node.js 22 and Yarn 1.22.22. From the repository root (`dev/` in the full local project), run:
 
 ```sh
 corepack enable
@@ -48,18 +67,26 @@ yarn run check
 yarn build
 ```
 
-The build produces the single script, SHA-256, and license notices under `dist/`. The bundle contains its required license notices as well.
+You’ll find the script, SHA-256 checksum, and license notices in `dist/`. The script also includes the required license notices. Building only creates these files; installation is a separate step.
 
-For the browser integration test, install Chrome and set these environment variables to local files:
+### Browser tests
 
-- `MARKEDIT_HTML`: the installed MarkEdit application's `Contents/Resources/index.html`.
-- `MARKEDIT_PREVIEW_JS`: Markdown View Modes 1.14.0 release script.
-- `MARKEDIT_HIGHLIGHT_JS`: Text Highlight 1.0.0 release script.
+Install Chrome, then set these variables to your local resource files:
 
-Then run `yarn test`. The test uses an ephemeral Chrome profile and a loopback server. Native file/menu calls are test doubles. It checks Source/Mixed/Preview, narrow layout, light/dark cleanup, disabling, and editing/undo; it updates sample screenshots under `assets/previews/`. CI checks the build and committed `dist/` consistency; native-resource integration tests run locally.
+| Variable | File |
+| --- | --- |
+| `MARKEDIT_HTML` | MarkEdit’s `Contents/Resources/index.html` |
+| `MARKEDIT_PREVIEW_JS` | Markdown View Modes 1.14.0 release script |
+| `MARKEDIT_HIGHLIGHT_JS` | Text Highlight 1.0.0 release script |
 
-## Contribution and license
+Run `yarn test` to check editing modes, narrow layouts, theme switching, disabling, and editing/undo. It also refreshes the screenshots in `assets/previews/`.
 
-The [MarkEdit registry contributing guide](https://github.com/MarkEdit-app/extensions#contributing) governs registration. A theme entry belongs under `themes/`, uses `theme.schema.json`, and includes `colorScheme`, `colorPatterns`, a versioned JavaScript URL and its SHA-256. Registry version updates are submitted through pull requests; availability in the Extension Manager depends on acceptance.
+Tests use a temporary Chrome profile and a local server, with simulated native file and menu calls. They leave your MarkEdit files untouched. Run these tests locally; CI checks the build and verifies that committed `dist/` files match it.
 
-New implementation: [MIT](LICENSE). See [credits and provenance](CREDITS.md) for design references and bundled dependency notices. The code license does not grant rights to third-party names or designs.
+## Contributing and license
+
+For registry submissions and updates, follow the [MarkEdit contributing guide](https://github.com/MarkEdit-app/extensions#contributing). Entries go in `themes/` and use `theme.schema.json`, with `colorScheme`, `colorPatterns`, a versioned script URL, and its SHA-256. Submit updates through a pull request; Extension Manager availability depends on acceptance.
+
+The implementation is licensed under [MIT](LICENSE). See [credits and provenance](CREDITS.md) for design references and dependency notices.
+
+Red Graphite is an independent project, not affiliated with or endorsed by Bear or Shiny Frog. The code license does not grant rights to third-party names or designs.
