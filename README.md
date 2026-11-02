@@ -28,6 +28,26 @@ The theme is also listed in the MarkEdit Extension Registry. It supports light m
 
 If you use custom Bear CSS or companion scripts, try the theme in a separate MarkEdit environment first. Those styles may override it. To uninstall, remove the theme’s script and restart MarkEdit.
 
+## Quick Look companion
+
+The optional CSS companion styles the **rendered preview** in Finder Quick Look in light mode. It reuses this theme's Preview typography, tables, quotes and callouts. Quick Look's source view and toolbar retain their original appearance; dark mode uses the preview extension's existing theme. This is a separate CSS installation, not a `themeName` value or an automatically synchronized editor setting.
+
+Requires MarkEdit 1.37.0 and Markdown View Modes (MarkEdit-preview) 1.14.0, with MarkEdit's Quick Look extension enabled. Open MarkEdit with the preview extension installed first so it prepares its shared preview resources. Earlier versions have not been verified.
+
+1. Open [`markedit-theme-red-graphite-quicklook.css`](dist/markedit-theme-red-graphite-quicklook.css) and use GitHub’s **Download raw file** button to save the CSS. It is included in this repository; it is not yet attached to a GitHub release. Developers can generate the same file with `yarn build`.
+2. In Finder, choose **Go → Go to Folder** and open:
+
+```text
+~/Library/Group Containers/group.app.cyan.markedit/Shared/styles/
+```
+
+3. Create `styles` if needed and copy `markedit-theme-red-graphite-quicklook.css` into it.
+4. Close any open Quick Look window, select a Markdown file in Finder, press Space, and choose **Preview**. Use light mode to see Red Graphite.
+
+To update, replace that same CSS file with the newer version. To disable or uninstall, remove only that file and reopen Quick Look. Existing preview settings and other styles do not need to change. Disabling/removing the editor theme does **not** remove this separately installed companion.
+
+Building and testing never perform this installation. The implementation follows MarkEdit's [shared CSS loader](https://github.com/MarkEdit-app/MarkEdit/blob/v1.37.0/QuickLookMac/QuickLookConfig.swift). The maintainer confirmed that the installed CSS works in Finder Quick Look on 2026-11-02. Automated verification uses the actual CoreEditor and preview extension in an isolated browser configured as the Quick Look host.
+
 ## Settings
 
 Add this to MarkEdit’s [settings.json](https://github.com/MarkEdit-app/MarkEdit/wiki/Customization#advanced-settings):
@@ -54,7 +74,7 @@ Built with AI assistance. If something looks wrong or behaves unexpectedly, plea
 
 ## Development
 
-Start with `main.ts` and the styles in `src/`.
+Start with `main.ts` and the styles in `src/`. `src/preview.css` is the shared Preview style source. `scripts/quicklook.mjs` adapts its selectors to Quick Look’s content wrapper; `src/quicklook.css` contains only host layout adjustments. Edit these sources, then rebuild; do not edit `dist/` directly.
 
 ### Build
 
@@ -67,7 +87,7 @@ yarn run check
 yarn build
 ```
 
-You’ll find the script, SHA-256 checksum, and license notices in `dist/`. The script also includes the required license notices. Only the JavaScript is tracked in Git; the checksum and separate license notices are generated for releases. Building only creates these files; installation is a separate step.
+You’ll find the editor script, Quick Look companion CSS, SHA-256 checksums for both files, and license notices in `dist/`. The script also includes the required license notices. The distributable JavaScript and Quick Look CSS are tracked in Git; the checksum and separate license notices are generated for releases. Building only creates these files; installation is a separate step.
 
 ### Browser tests
 
@@ -80,6 +100,8 @@ Install Chrome, then set these variables to your local resource files:
 | `MARKEDIT_HIGHLIGHT_JS` | Text Highlight 1.0.0 release script |
 
 Run `yarn test` to check editing modes, narrow layouts, theme switching, disabling, and editing/undo. It also refreshes the two README screenshots in `assets/previews/`. Extra test screenshots and the verification report stay locally in `test/.generated/`.
+
+`test/quicklook.mjs` additionally checks shared CSS loading/removal in a temporary directory, preview styling, source/toolbar isolation, dark-mode fallback, mode switching, and narrow/wide layouts. Its screenshots and verification report are written under `test/.generated/`. It never invokes Finder, `qlmanage`, or writes to a real shared container.
 
 Tests use a temporary Chrome profile and a local server, with simulated native file and menu calls. They leave your MarkEdit files untouched. Run these tests locally; CI checks the build and verifies that committed `dist/` files match it.
 

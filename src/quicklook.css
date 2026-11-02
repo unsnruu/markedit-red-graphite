@@ -1,0 +1,18 @@
+/* The pane fills the window; only its content has a reading-width limit. */
+body.quicklook > .markdown-body {
+  max-width: none;
+}
+
+/* Preserve the host's zoom and toolbar position, with space above the text. */
+body.quicklook > .markdown-body.overlay > .quicklook-content {
+  max-width: 752px;
+  margin-inline: auto;
+  margin-top: 0 !important;
+  min-height: 100%;
+}
+
+@media (max-width: 580px) {
+  body.quicklook > .markdown-body.overlay {
+    padding-top: 40px !important;
+  }
+}

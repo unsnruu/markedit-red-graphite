@@ -6,7 +6,7 @@
   "scripts": {
     "build": "vite build && node scripts/release.mjs",
     "check": "tsc --noEmit",
-    "test": "node test/browser.mjs"
+    "test": "node test/browser.mjs && node test/quicklook.mjs"
   },
   "dependencies": {
     "markedit-theming": "https://github.com/MarkEdit-app/MarkEdit-theming#v0.17.0"

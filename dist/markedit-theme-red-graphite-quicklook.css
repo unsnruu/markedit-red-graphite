@@ -1,0 +1,104 @@
+/*! markedit-theme-red-graphite 1.0.2 — Quick Look companion
+MIT License
+
+Copyright (c) 2026 Red Graphite contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
+@media (prefers-color-scheme: light) {
+body.quicklook > .markdown-body { box-sizing:border-box; min-width:0 !important; max-width:800px; margin-inline:auto; padding:32px 48px !important; overflow-wrap:anywhere; color-scheme:light; background:#fcfcfc !important; color:#222 !important; font:16px/1.68 -apple-system,BlinkMacSystemFont,'Helvetica Neue','Apple SD Gothic Neo',sans-serif !important; -webkit-font-smoothing:antialiased; }
+body.quicklook > .markdown-body :is(h1,h2,h3,h4,h5,h6) { color:#262626 !important; font-weight:500; line-height:1.4; margin:1em 0 .37em; padding-bottom:0; border-bottom:0 !important; text-shadow:none !important; }
+body.quicklook > .markdown-body h1 { font-size:26px; } body.quicklook > .markdown-body h2 { font-size:22px; } body.quicklook > .markdown-body h3 { font-size:20px; } body.quicklook > .markdown-body h4 { font-size:18px; } body.quicklook > .markdown-body :is(h5,h6) { font-size:16px; } body.quicklook > .markdown-body h6 { color:#525252 !important; }
+body.quicklook > .markdown-body :is(p,ul,ol) { margin-block:8px; }
+body.quicklook > .markdown-body a { color:#e06e73 !important; text-decoration:none; } body.quicklook > .markdown-body a:hover { text-decoration:underline; }
+body.quicklook > .markdown-body li::marker { color:#e06e73; }
+body.quicklook > .markdown-body input[type="checkbox"] { accent-color:#e06e73; margin-inline-end:8px; }
+body.quicklook > .markdown-body blockquote { color:#525252; border:0; border-left:2px solid #e06e73; padding-left:14px; border-radius:0; }
+body.quicklook > .markdown-body pre { background:#f3f3f3 !important; color:#424242; border:1px solid #e5e5e5; border-radius:6px; padding:16px; overflow:auto; }
+body.quicklook > .markdown-body :is(code,kbd) { background:#f3f3f3; color:#424242; border-radius:4px; font-family:ui-monospace,Menlo,monospace; }
+body.quicklook > .markdown-body pre code { background:transparent; border-radius:0; }
+body.quicklook > .markdown-body img { max-width:100%; border-radius:8px; }
+body.quicklook > .markdown-body table { width:fit-content; max-width:100%; border:1px solid #d8d8d8; border-collapse:separate !important; border-spacing:0; border-radius:8px; overflow:hidden; }
+body.quicklook > .markdown-body :is(th,td) { padding:6px 13px !important; border:0 !important; border-right:1px solid #d8d8d8 !important; border-bottom:1px solid #d8d8d8 !important; }
+body.quicklook > .markdown-body th { background:#f0f0f0 !important; }
+body.quicklook > .markdown-body tr { background:#fcfcfc !important; } body.quicklook > .markdown-body tr:nth-child(2n) { background:#f7f7f7 !important; }
+body.quicklook > .markdown-body tr>:last-child { border-right:0 !important; } body.quicklook > .markdown-body table>:last-child>tr:last-child>* { border-bottom:0 !important; }
+body.quicklook > .markdown-body hr { border:0 !important; height:1px !important; background:#f1f1f1 !important; }
+body.quicklook > .markdown-body mark { color:#222; background:#f4d3d5; border-radius:3px; padding-inline:2px; }
+body.quicklook > .markdown-body kbd { border:1px solid #d8d8d8; box-shadow:0 1px 0 #d8d8d8; padding:2px 5px; }
+body.quicklook > .markdown-body details { border:1px solid #d8d8d8; border-radius:6px; padding:10px 14px; margin-block:12px; }
+body.quicklook > .markdown-body summary { color:#525252; cursor:pointer; } body.quicklook > .markdown-body summary::marker { color:#e06e73; }
+body.quicklook > .markdown-body .footnotes { color:#525252; font-size:.9em; }
+body.quicklook > .markdown-body .markdown-alert { border:1px solid #e5e5e5 !important; border-radius:10px !important; background:#f7f7f7 !important; padding:14px 18px !important; margin-block:16px !important; color:#525252 !important; box-shadow:0 2px 5px #00000005; }
+body.quicklook > .markdown-body ::selection { background:#f4d3d5; }
+@media(max-width:540px) { body.quicklook > .markdown-body { padding:24px !important; } }
+
+/* Match the editor's line rhythm without changing the table shadow-root styles. */
+body.quicklook > .markdown-body {
+  padding:28px 24px !important;
+  line-height:1.5 !important;
+}
+body.quicklook > .markdown-body :is(h1,h2,h3,h4,h5,h6) {
+  line-height:1.5;
+  margin-block:24px;
+}
+body.quicklook > .markdown-body > .quicklook-content > :is(p,ul,ol,blockquote,table,pre,div) { margin-block:24px; }
+body.quicklook > .markdown-body > .quicklook-content > :first-child { margin-top:0 !important; }
+body.quicklook > .markdown-body > .quicklook-content > :last-child { margin-bottom:0 !important; }
+body.quicklook > .markdown-body :is(ul,ol) { padding-left:24px; }
+body.quicklook > .markdown-body li + li { margin-top:0; }
+body.quicklook > .markdown-body li > p { margin-block:0; }
+body.quicklook > .markdown-body li > :is(ul,ol) { margin-block:0; }
+body.quicklook > .markdown-body .task-list-item { list-style:none; }
+body.quicklook > .markdown-body input[type="checkbox"] {
+  width:16px; height:16px; margin-block:0; margin-left:-24px; margin-right:8px; vertical-align:-2px;
+}
+body.quicklook > .markdown-body blockquote { padding-inline:14px 0; }
+body.quicklook > .markdown-body blockquote > p { margin-block:0; }
+body.quicklook > .markdown-body .markdown-alert {
+  padding:12px 18px !important;
+  margin-block:24px !important;
+  box-shadow:none;
+}
+body.quicklook > .markdown-body .markdown-alert > p { margin-block:0; }
+body.quicklook > .markdown-body table { line-height:1.68; }
+body.quicklook > .markdown-body pre { font-size:16px; line-height:1.5; }
+body.quicklook > .markdown-body pre code { font-size:inherit; line-height:inherit; }
+
+/* The pane fills the window; only its content has a reading-width limit. */
+body.quicklook > .markdown-body {
+  max-width: none;
+}
+
+/* Preserve the host's zoom and toolbar position, with space above the text. */
+body.quicklook > .markdown-body.overlay > .quicklook-content {
+  max-width: 752px;
+  margin-inline: auto;
+  margin-top: 0 !important;
+  min-height: 100%;
+}
+
+@media (max-width: 580px) {
+  body.quicklook > .markdown-body.overlay {
+    padding-top: 40px !important;
+  }
+}
+
+}
