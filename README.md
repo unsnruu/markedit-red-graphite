@@ -63,20 +63,19 @@ Want the same look in Finder? Install the optional CSS file.
 
 ### Install
 
-1. Open [`markedit-theme-red-graphite-quicklook.css`](dist/markedit-theme-red-graphite-quicklook.css).
-2. On GitHub, click **Download raw file** to save it.
-3. In Finder, choose **Go → Go to Folder**. Open this folder:
+1. Download [`markedit-theme-red-graphite-quicklook.css` (v1.0.2)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite-quicklook.css).
+2. In Finder, choose **Go → Go to Folder**. Open this folder:
 
    ```text
    ~/Library/Group Containers/group.app.cyan.markedit/Shared/
    ```
 
-4. Open the `styles` folder. Create it if it does not exist.
-5. Copy the CSS file into `styles`.
-6. Close any open Quick Look window.
-7. Select a Markdown file in Finder, press Space, and choose **Preview**.
+3. Open the `styles` folder. Create it if it does not exist.
+4. Copy the CSS file into `styles`.
+5. Close any open Quick Look window.
+6. Select a Markdown file in Finder, press Space, and choose **Preview**.
 
-The CSS is included in this repository. It is not yet attached to a GitHub release. You can also build it with `yarn build`.
+The CSS is available in the [v1.0.2 release](https://github.com/unsnruu/markedit-red-graphite/releases/tag/v1.0.2). You can also build it with `yarn build`.
 
 ### Ask an AI agent to install it
 
@@ -92,9 +91,10 @@ Source repository:
 https://github.com/unsnruu/markedit-red-graphite
 
 1. Read the repository README and its Quick Look instructions.
-   Use dist/markedit-theme-red-graphite-quicklook.css from the local
-   checkout if available. Otherwise, download the raw CSS from this
-   repository. Record the source commit or local file path.
+   Download the CSS from this release asset:
+   https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite-quicklook.css
+   Verify its SHA-256 against SHA256SUMS.txt in the same release.
+   Record the download URL and checksum.
    Confirm that the downloaded file is CSS, not a GitHub HTML page.
    Use the existing CSS; there is no need to recreate the theme.
 
