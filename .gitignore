@@ -1,13 +1,18 @@
+# Installed dependencies and package-manager logs
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS metadata and local environment settings
 .DS_Store
 .env
 .env.*
-# Local project records; not part of the distributable repository.
-/AGENTS.md
-/planning/
-/research/
-/outputs/
-/assets/README.md
+!.env.example
+
+# Local verification output and preserved development archives
 /assets/previews/verification.json
-/dev/test/.generated/
-/dev/archive/
+/test/.generated/
+/archive/
+
+# Keep dist/, yarn.lock, and public preview images in version control.

@@ -8,9 +8,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: dev
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,7 +15,7 @@ jobs:
           node-version: '22'
       - run: corepack enable
       - run: yarn install --frozen-lockfile
-      - run: yarn check
+      - run: yarn run check
       - run: yarn build
       - run: node --check dist/markedit-theme-red-graphite.js
       - run: git diff --exit-code -- dist
