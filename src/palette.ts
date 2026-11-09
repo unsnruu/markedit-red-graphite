@@ -1,7 +1,7 @@
 export const palette = {
   background: '#fcfcfc', text: '#222222', heading: '#262626', muted: '#525252',
   accent: '#e06e73', selection: '#f4d3d5', active: '#f7f2f2',
-  code: '#f3f3f3', border: '#d8d8d8', divider: '#f1f1f1',
+  code: '#f3f3f3', border: '#d8d8d8', divider: '#d9d9d9',
 };
 export const colors = {
   editor: {

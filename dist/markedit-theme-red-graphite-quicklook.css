@@ -40,7 +40,7 @@ body.quicklook > .markdown-body :is(th,td) { padding:6px 13px !important; border
 body.quicklook > .markdown-body th { background:#f0f0f0 !important; }
 body.quicklook > .markdown-body tr { background:#fcfcfc !important; } body.quicklook > .markdown-body tr:nth-child(2n) { background:#f7f7f7 !important; }
 body.quicklook > .markdown-body tr>:last-child { border-right:0 !important; } body.quicklook > .markdown-body table>:last-child>tr:last-child>* { border-bottom:0 !important; }
-body.quicklook > .markdown-body hr { border:0 !important; height:1px !important; background:#f1f1f1 !important; }
+body.quicklook > .markdown-body hr { border:0 !important; height:1px !important; background:#d9d9d9 !important; }
 body.quicklook > .markdown-body mark { color:#222; background:#f4d3d5; border-radius:3px; padding-inline:2px; }
 body.quicklook > .markdown-body kbd { border:1px solid #d8d8d8; box-shadow:0 1px 0 #d8d8d8; padding:2px 5px; }
 body.quicklook > .markdown-body details { border:1px solid #d8d8d8; border-radius:6px; padding:10px 14px; margin-block:12px; }
@@ -81,6 +81,12 @@ body.quicklook > .markdown-body .markdown-alert > p { margin-block:0; }
 body.quicklook > .markdown-body table { line-height:1.68; }
 body.quicklook > .markdown-body pre { font-size:16px; line-height:1.5; }
 body.quicklook > .markdown-body pre code { font-size:inherit; line-height:inherit; }
+
+/* Mixed retains a 24px rule line and one blank line on each side.
+   Its content also reserves a 12px trailing editor inset. */
+body.quicklook > .markdown-body > .quicklook-content > hr {
+  width:calc(100% - 12px); padding:0 !important; margin:35.5px 0 !important;
+}
 
 /* The pane fills the window; only its content has a reading-width limit. */
 body.quicklook > .markdown-body {
