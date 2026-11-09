@@ -38,7 +38,7 @@ MarkEdit downloads and installs the theme for you.
 <details>
 <summary>Manual installation</summary>
 
-1. Download [`markedit-theme-red-graphite.js` (v1.0.2)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite.js).
+1. Download [`markedit-theme-red-graphite.js` (v1.0.3)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.3/markedit-theme-red-graphite.js).
 2. Copy it to MarkEdit’s user scripts folder.
 3. Restart MarkEdit.
 
@@ -63,7 +63,7 @@ Want the same look in Finder? Install the optional CSS file.
 
 ### Install
 
-1. Download [`markedit-theme-red-graphite-quicklook.css` (v1.0.2)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite-quicklook.css).
+1. Download [`markedit-theme-red-graphite-quicklook.css` (v1.0.3)](https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.3/markedit-theme-red-graphite-quicklook.css).
 2. In Finder, choose **Go → Go to Folder**. Open this folder:
 
    ```text
@@ -75,7 +75,7 @@ Want the same look in Finder? Install the optional CSS file.
 5. Close any open Quick Look window.
 6. Select a Markdown file in Finder, press Space, and choose **Preview**.
 
-The CSS is available in the [v1.0.2 release](https://github.com/unsnruu/markedit-red-graphite/releases/tag/v1.0.2). You can also build it with `yarn build`.
+The CSS is available in the [v1.0.3 release](https://github.com/unsnruu/markedit-red-graphite/releases/tag/v1.0.3). You can also build it with `yarn build`.
 
 ### Ask an AI agent to install it
 
@@ -92,7 +92,7 @@ https://github.com/unsnruu/markedit-red-graphite
 
 1. Read the repository README and its Quick Look instructions.
    Download the CSS from this release asset:
-   https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.2/markedit-theme-red-graphite-quicklook.css
+   https://github.com/unsnruu/markedit-red-graphite/releases/download/v1.0.3/markedit-theme-red-graphite-quicklook.css
    Verify its SHA-256 against SHA256SUMS.txt in the same release.
    Record the download URL and checksum.
    Confirm that the downloaded file is CSS, not a GitHub HTML page.
