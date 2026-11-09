@@ -39,7 +39,12 @@ html[data-red-graphite="light"] .cm-editor input[type="checkbox"] { accent-color
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTaskCheckboxFrame { margin-inline-end:8px !important; }
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenImage { border-radius:8px !important; }
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTable { width:fit-content !important; max-width:100%; margin-left:24px; padding:0 !important; background:transparent !important; border:0 !important; }
-html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenHorizontalRule { border-top:1px solid #f1f1f1 !important; }
+/* Center the rule in its editable line without changing the document's line height. */
+html[data-red-graphite="light"] .cm-editor .cm-line:has(.cm-md-syntaxHiddenHorizontalRule) { position:relative; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenHorizontalRule {
+  position:absolute; left:24px; top:calc(50% - .5px); width:calc(100% - 48px) !important;
+  border-top:1px solid #d9d9d9 !important; opacity:1 !important;
+}
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenBlockquoteBar { background:#e06e73 !important; border-radius:2px; }
 html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-callout { position:relative; z-index:1; background:#f7f7f7 !important; border-inline:1px solid #e5e5e5; margin-inline:24px; padding-inline:18px !important; }
 html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-first { border-top:1px solid #e5e5e5; border-radius:10px 10px 0 0; padding-top:12px; }

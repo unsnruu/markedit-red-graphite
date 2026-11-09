@@ -456,7 +456,7 @@ const palette = {
   accent: "#e06e73",
   selection: "#f4d3d5",
   active: "#f7f2f2",
-  divider: "#f1f1f1"
+  divider: "#d9d9d9"
 };
 const colors = {
   editor: {
@@ -526,7 +526,12 @@ html[data-red-graphite="light"] .cm-editor input[type="checkbox"] { accent-color
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTaskCheckboxFrame { margin-inline-end:8px !important; }
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenImage { border-radius:8px !important; }
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenTable { width:fit-content !important; max-width:100%; margin-left:24px; padding:0 !important; background:transparent !important; border:0 !important; }
-html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenHorizontalRule { border-top:1px solid #f1f1f1 !important; }
+/* Center the rule in its editable line without changing the document's line height. */
+html[data-red-graphite="light"] .cm-editor .cm-line:has(.cm-md-syntaxHiddenHorizontalRule) { position:relative; }
+html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenHorizontalRule {
+  position:absolute; left:24px; top:calc(50% - .5px); width:calc(100% - 48px) !important;
+  border-top:1px solid #d9d9d9 !important; opacity:1 !important;
+}
 html[data-red-graphite="light"] .cm-editor .cm-md-syntaxHiddenBlockquoteBar { background:#e06e73 !important; border-radius:2px; }
 html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-callout { position:relative; z-index:1; background:#f7f7f7 !important; border-inline:1px solid #e5e5e5; margin-inline:24px; padding-inline:18px !important; }
 html[data-red-graphite="light"] .cm-editor.cm-md-syntaxHiddenMode .rg-first { border-top:1px solid #e5e5e5; border-radius:10px 10px 0 0; padding-top:12px; }
@@ -555,7 +560,7 @@ const previewCSS = `.markdown-body { box-sizing:border-box; min-width:0 !importa
 .markdown-body th { background:#f0f0f0 !important; }
 .markdown-body tr { background:#fcfcfc !important; } .markdown-body tr:nth-child(2n) { background:#f7f7f7 !important; }
 .markdown-body tr>:last-child { border-right:0 !important; } .markdown-body table>:last-child>tr:last-child>* { border-bottom:0 !important; }
-.markdown-body hr { border:0 !important; height:1px !important; background:#f1f1f1 !important; }
+.markdown-body hr { border:0 !important; height:1px !important; background:#d9d9d9 !important; }
 .markdown-body mark { color:#222; background:#f4d3d5; border-radius:3px; padding-inline:2px; }
 .markdown-body kbd { border:1px solid #d8d8d8; box-shadow:0 1px 0 #d8d8d8; padding:2px 5px; }
 .markdown-body details { border:1px solid #d8d8d8; border-radius:6px; padding:10px 14px; margin-block:12px; }
@@ -596,6 +601,12 @@ body > .markdown-body .markdown-alert > p { margin-block:0; }
 body > .markdown-body table { line-height:1.68; }
 body > .markdown-body pre { font-size:16px; line-height:1.5; }
 body > .markdown-body pre code { font-size:inherit; line-height:inherit; }
+
+/* Mixed retains a 24px rule line and one blank line on each side.
+   Its content also reserves a 12px trailing editor inset. */
+body > .markdown-body > hr {
+  width:calc(100% - 12px); padding:0 !important; margin:35.5px 0 !important;
+}
 `;
 const attribute = "data-red-graphite";
 function callouts(view$1) {

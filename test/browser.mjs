@@ -88,6 +88,33 @@ try {
  await page.evaluate(()=>require('@codemirror/commands').undo(MarkEdit.editorView));
  assert.equal(await text(),fixture);
  // Verify actual rendered marker sizes, not just the presence of hidden-syntax classes.
+ // Compare rendered geometry across modes, including wrapped surrounding text.
+ for (const width of [880, 420]) {
+   await page.setViewportSize({width,height:1120});
+   const before = 'Before the divider with enough text to wrap on a narrow screen.';
+   const source = `${before}\n\n---\n\nAfter`;
+   await mode('Markdown Source');
+   await page.evaluate(source=>MarkEdit.editorView.dispatch({changes:{from:0,to:MarkEdit.editorView.state.doc.length,insert:source},selection:{anchor:0}}),source);
+   const geometry = async mixed => page.evaluate(({mixed,before})=>{
+     const rule = document.querySelector(mixed ? '.cm-md-syntaxHiddenHorizontalRule' : 'body > .markdown-body > hr');
+     const nodes = [...document.querySelectorAll(mixed ? '.cm-content > .cm-line' : 'body > .markdown-body > p')];
+     const upper = nodes.find(el=>el.textContent===before).getBoundingClientRect();
+     const lower = nodes.find(el=>el.textContent==='After').getBoundingClientRect();
+     const r=rule.getBoundingClientRect(), style=getComputedStyle(rule);
+     return {x:r.x,width:r.width,height:r.height,above:r.top-upper.bottom,below:lower.top-r.bottom,opacity:style.opacity};
+   },{mixed,before});
+   await mode('Mixed (Syntax Hidden)');
+   await page.waitForSelector('.cm-md-syntaxHiddenHorizontalRule');
+   const mixed = await geometry(true);
+   await mode('Preview (Overlay)');
+   await page.waitForSelector('body > .markdown-body > hr');
+   const preview = await geometry(false);
+   for (const key of ['x','width','height','above','below']) assert.ok(Math.abs(mixed[key]-preview[key])<=1, `${width}px divider ${key}: ${JSON.stringify({mixed,preview})}`);
+   assert.equal(mixed.opacity,'1');
+   assert.equal(preview.opacity,'1');
+ }
+ await page.setViewportSize({width:880,height:1120});
+ await mode('Markdown Source');
  const headingFixture = Array.from({length:6},(_,i)=>`${'#'.repeat(i+1)} Heading ${i+1}`).join('\n') + '\n\nBody';
  await page.evaluate(source=>MarkEdit.editorView.dispatch({changes:{from:0,to:MarkEdit.editorView.state.doc.length,insert:source},selection:{anchor:source.length}}),headingFixture);
  const headingSizes = [26,22,20,18,16,16];
